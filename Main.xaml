@@ -3,9 +3,6 @@
     <x:Property Name="brand" Type="InArgument(x:String)" />
     <x:Property Name="min" Type="InArgument(x:Int32)" />
     <x:Property Name="max" Type="InArgument(x:Int32)" />
-    <x:Property Name="fountItem" Type="InOutArgument(x:String)" />
-    <x:Property Name="fountPrice" Type="InOutArgument(x:Int32)" />
-    <x:Property Name="foundDescription" Type="InOutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -95,9 +92,6 @@
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,1072" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser_pass" />
-      <Variable x:TypeArguments="x:String" Name="io_targetIten" />
-      <Variable x:TypeArguments="x:Int32" Name="out_targetPrice" />
-      <Variable x:TypeArguments="x:String" Name="foundDescription" />
       <Variable x:TypeArguments="x:String" Name="out_foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="out_foundPrice" />
       <Variable x:TypeArguments="x:String" Name="out_foundDescription" />
