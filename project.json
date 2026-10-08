@@ -36,7 +36,6 @@
   },
   "designOptions": {
     "projectProfile": "Developement",
-"modernBehavior": false,
     "outputType": "Process",
     "libraryOptions": {
       "includeOriginalXaml": false,
@@ -46,6 +45,7 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
+    "modernBehavior": false,
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
@@ -53,6 +53,12 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "218c5a8e-6fb3-4f62-b563-ff581a843908",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "PerformLogin.xaml",
+      "uniqueId": "71c8491b-a758-4030-b01f-8ad58bdeb7af",
       "input": [],
       "output": []
     }
