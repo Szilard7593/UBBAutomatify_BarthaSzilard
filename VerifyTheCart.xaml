@@ -87,7 +87,7 @@
       <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="VerifyTheCart" sap:VirtualizedContainerService.HintSize="806,3067" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="VerifyTheCart" sap:VirtualizedContainerService.HintSize="816,3206" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bool_ItemExists" />
     </Sequence.Variables>
@@ -96,19 +96,28 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser DemoBlaze" sap:VirtualizedContainerService.HintSize="654,3021" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="241f251b610e74c47bc12c71490f270a" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser DemoBlaze" sap:VirtualizedContainerService.HintSize="654,3183" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="241f251b610e74c47bc12c71490f270a" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="620,2874" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="620,3013" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message Navigating to cart" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Navigating to the cart&quot;]" />
+            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" DisplayName="Find Element 'A  cartur'" sap:VirtualizedContainerService.HintSize="586,139" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1" WaitVisible="True">
+              <ui:WaitUiElementAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2da8652-1943-433c-977c-947415c170bb" InformativeScreenshot="ab0af3bd68503762d58a4cda8e3e009c" Selector="&lt;webctrl id='cartur' tag='A' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:WaitUiElementAppear.Target>
+            </ui:WaitUiElementAppear>
             <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="300" DelayMS="400" DisplayName="Click Cart Button" sap:VirtualizedContainerService.HintSize="586,139" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
@@ -189,7 +198,7 @@
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Else - All items removed" sap:VirtualizedContainerService.HintSize="416.00000000000006,226" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <Sequence DisplayName="Else - All items removed" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_7">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
