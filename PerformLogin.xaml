@@ -297,13 +297,10 @@
                               </ui:CursorPosition>
                             </ui:Click.CursorPosition>
                             <ui:Click.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dbeff8f9-6978-4fc5-97ee-eaa3c8a5feb1" InformativeScreenshot="c620524a0491fe71748608e418a5fd2b" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;&lt;webctrl id='login2' tag='A' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dbeff8f9-6978-4fc5-97ee-eaa3c8a5feb1" InformativeScreenshot="c620524a0491fe71748608e418a5fd2b" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;&lt;webctrl id='login2' tag='A' /&gt;" WaitForReady="COMPLETE">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
-                                <ui:Target.WaitForReady>
-                                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                                </ui:Target.WaitForReady>
                               </ui:Target>
                             </ui:Click.Target>
                           </ui:Click>
