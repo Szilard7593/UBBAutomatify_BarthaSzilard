@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="HUGoGTUya0CLb8uTVfLSyA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="demoblaze.com/index.html" CVScreenId="831d19c8-1957-463f-ba37-b61dd0a1ec8d" CvTextArea="2127, 321, 90, 40" CvTextArgument="Log in" CvType="Text" DesignTimeRectangle="2115, 301, 116, 80" DesignTimeScaleFactor="2" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='login2' tag='A' type='' class='nav-link' aaname='Log in' check:innerText='Log in' /&gt;" Guid="7ea22f6d-eab6-43d9-b08a-2ff6813c6abd" ScopeSelectorArgument="&lt;html app='msedge.exe' title='STORE' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="831d19c8-1957-463f-ba37-b61dd0a1ec8d" CvTextArea="2035, 321, 68, 34" CvTextArgument="Cart" CvType="Text" DesignTimeRectangle="2023, 301, 92, 80" ElementType="Text" FullSelectorArgument="&lt;webctrl id='cartur' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='cartur' tag='A' type='' class='nav-link' aaname='Cart' check:innerText='Cart' /&gt;" Guid="60dbfd8a-0df6-41da-9533-2e8b691fc347" SearchSteps="Selector, FuzzySelector, CV" />
+          <Target CVScreenId="831d19c8-1957-463f-ba37-b61dd0a1ec8d" CvTextArea="2243, 321, 110, 40" CvTextArgument="Sign up" CvType="Text" DesignTimeRectangle="2231, 301, 135, 80" ElementType="Text" FullSelectorArgument="&lt;webctrl id='signin2' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='signin2' tag='A' type='' class='nav-link' aaname='Sign up' check:innerText='Sign up' /&gt;" Guid="e5d5ec09-87bc-43d3-a922-caaa1ff62d6c" SearchSteps="Selector, FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="10cd75a7b3b5bb940567d67d1cc2d82c.png" xmlns="">0cyDkAhvzgk6P-OGZpq2MLg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge STORE(1)",
+  "Type": "Screen",
+  "Id": "pxon-Fsqm0-Vzbzb0UAEsg",
+  "Reference": "-oHQCfxahUuMzcxvyQdvlw/pxon-Fsqm0-Vzbzb0UAEsg",
+  "ParentRef": "-oHQCfxahUuMzcxvyQdvlw/BSfcesbwgkmruB69wTCOmA",
+  "Created": "2026-10-03T20:28:53.5377426Z",
+  "Updated": "2026-10-03T20:28:53.5377426Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

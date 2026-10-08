@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge STORE",
+  "Type": "App",
+  "Id": "uyHEwdBT7kGlmoUtdczqkw",
+  "Reference": "-oHQCfxahUuMzcxvyQdvlw/uyHEwdBT7kGlmoUtdczqkw",
+  "Created": "2026-09-22T11:03:47.3173958Z",
+  "Updated": "2026-09-22T11:03:47.3173958Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.14.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

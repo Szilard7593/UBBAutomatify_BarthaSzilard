@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="8MhhabHEsUyKk8XdfKL65A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="demoblaze.com/index.html" CVScreenId="47ed11af-3796-46f5-b334-1c0ab3aa22ad" CvElementArea="1747, 1011, 162, 84" CvTextArea="1781, 1035, 92, 38" CvTextArgument="Log in" CvType="Button" DesignTimeRectangle="1751, 1015, 155, 76" DesignTimeScaleFactor="2" ElementType="Button" FuzzySelectorArgument="&lt;webctrl aaname='Log in' parentid='logInModal' tag='BUTTON' type='button' class='btn btn-primary' check:innerText='Log in' /&gt;" Guid="37d96a2c-b81b-46f0-b669-b2eabf44dced" ScopeSelectorArgument="&lt;html app='msedge.exe' title='STORE' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="47ed11af-3796-46f5-b334-1c0ab3aa22ad" CvElementArea="1581, 1012, 156, 81" CvTextArea="1617, 1035, 86, 32" CvTextArgument="Close" CvType="Button" DesignTimeRectangle="1585, 1015, 150, 76" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='Close' parentid='logInModal' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Close' parentid='logInModal' tag='BUTTON' type='button' class='btn btn-secondary' check:innerText='Close' /&gt;" Guid="e960b498-105b-4515-825a-f8bd9877d5f6" SearchSteps="Selector, FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="e9e17a5494dbe6eb9ffcd748ffb9b7f6.png" xmlns="">0BcdmyVMphke9xICxYgwD9Q</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

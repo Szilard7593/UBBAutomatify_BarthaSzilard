@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="jIOCN8vjIU2KZn15W_mLvg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="demoblaze.com/index.html" CVScreenId="f439530c-fb49-490d-9496-583c9c5cf8d2" CvElementArea="966, 566, 941, 83" CvType="InputBox" DesignTimeRectangle="970, 571, 936, 76" DesignTimeScaleFactor="2" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='loginusername' tag='INPUT' /&gt;" Guid="5311d0a5-7408-44b6-b4b6-55a5aeb5328a" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='STORE' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="f439530c-fb49-490d-9496-583c9c5cf8d2" CvTextArea="967, 485, 142, 28" CvTextArgument="Username:" CvType="Text" DesignTimeRectangle="970, 481, 138, 44" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='logInModal' tag='LABEL' type='' class='form-control-label' aaname='Username:' check:innerText='Username:' /&gt;" Guid="5e9ab862-9d2e-4a15-b954-d9b36e736b19" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="ce5637211b3eef7eda9373c074d8a69e.png" xmlns="">0CMCPT_9nRU-JBXOtVmP6Pw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
