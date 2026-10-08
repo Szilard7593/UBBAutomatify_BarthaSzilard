@@ -92,12 +92,15 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="806.0000000000001,897.0000000000001" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="806.0000000000001,1072" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser_pass" />
       <Variable x:TypeArguments="x:String" Name="io_targetIten" />
       <Variable x:TypeArguments="x:Int32" Name="out_targetPrice" />
       <Variable x:TypeArguments="x:String" Name="foundDescription" />
+      <Variable x:TypeArguments="x:String" Name="out_foundItem" />
+      <Variable x:TypeArguments="x:Int32" Name="out_foundPrice" />
+      <Variable x:TypeArguments="x:String" Name="out_foundDescription" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -120,17 +123,18 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_brand">[brand]</InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_minPrice">[min]</InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_maxPrice">[max]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_targetItem">[fountItem]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_targetPrice">[fountPrice]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_targetDescription">[foundDescription]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_targetItem">[out_foundItem]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_targetPrice">[out_foundPrice]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_targetDescription">[out_foundDescription]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[out_foundItem]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add product to cart" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="AddToCart.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:Browser" x:Key="in_browser">[browser_pass]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_targetItem">[fountItem]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_targetPrice">[fountPrice]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_targetDescription">[foundDescription]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_targetItem">[out_foundItem]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_targetPrice">[out_foundPrice]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_targetDescription">[out_foundDescription]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Everything went ok&quot;]" />
