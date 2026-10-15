@@ -1,9 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="AddToCart" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_browser" Type="InArgument(ui:Browser)" />
     <x:Property Name="in_targetItem" Type="InArgument(x:String)" />
     <x:Property Name="in_targetPrice" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_targetDescription" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -142,7 +140,6 @@
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,3151" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="productDescription" />
               <Variable x:TypeArguments="x:String" Name="productPrice" />
               <Variable x:TypeArguments="x:String" Name="productName" />
             </Sequence.Variables>
@@ -263,7 +260,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - pop up" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+            <ui:UiElementExists ContinueOnError="{x:Null}" DisplayName="Element Exists - pop up" Exists="{x:Null}" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="UiElementExists_4" Result="{x:Null}">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50756c31-083e-433a-b6fb-bb8977643689" InformativeScreenshot="aefa7884c384f85bfb4e6b97058496b5" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
               </ui:UiElementExists.Target>
