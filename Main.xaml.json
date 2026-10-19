@@ -6,11 +6,11 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "brand",
-      "DisplayName": "brand",
+      "Name": "in_min",
+      "DisplayName": "in_min",
       "Category": null,
       "Tooltip": null,
-      "Placeholder": null,
+      "Placeholder": "100",
       "Widget": null,
       "IsRequired": false,
       "IsPrincipal": true,
@@ -18,11 +18,11 @@
       "DataSourceItems": null
     },
     {
-      "Name": "min",
-      "DisplayName": "min",
+      "Name": "in_max",
+      "DisplayName": "in_max",
       "Category": null,
       "Tooltip": null,
-      "Placeholder": null,
+      "Placeholder": "1800",
       "Widget": null,
       "IsRequired": false,
       "IsPrincipal": true,
@@ -30,11 +30,11 @@
       "DataSourceItems": null
     },
     {
-      "Name": "max",
-      "DisplayName": "max",
+      "Name": "in_brand",
+      "DisplayName": "in_brand",
       "Category": null,
       "Tooltip": null,
-      "Placeholder": null,
+      "Placeholder": "Iphone",
       "Widget": null,
       "IsRequired": false,
       "IsPrincipal": true,

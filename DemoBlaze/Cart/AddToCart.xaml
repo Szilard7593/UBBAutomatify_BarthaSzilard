@@ -54,7 +54,12 @@
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
@@ -63,47 +68,37 @@
       <AssemblyReference>System.Drawing.Common</AssemblyReference>
       <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Net.Mail</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Collections</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="816,3870" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="638,3740" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bool_itemFound" />
       <Variable x:TypeArguments="x:String" Default="[in_targetItem]" Name="targetItem" />
@@ -114,41 +109,24 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="638,114" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[targetItem]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_targetItem]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="638,175" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;The target item was assigned&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="638,114" sap2010:WorkflowViewState.IdRef="Assign_3">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[targetPrice]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[in_targetPrice]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="638,123" sap2010:WorkflowViewState.IdRef="Delay_1" />
-    <ui:BrowserScope Browser="{x:Null}" BrowserType="Edge" ContinueOnError="{x:Null}" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="638,3321" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8825be9124736784da11010da8320786" SearchScope="{x:Null}" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;" TimeoutMS="{x:Null}" UiBrowser="{x:Null}">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="638,3717" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8825be9124736784da11010da8320786" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,3151" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,3547" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="productPrice" />
               <Variable x:TypeArguments="x:String" Name="productName" />
+              <Variable x:TypeArguments="x:Boolean" Name="popUpLoaded" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While – Item Search" sap:VirtualizedContainerService.HintSize="570,1663" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1" MaxIterations="{x:Null}">
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While – Item Search" sap:VirtualizedContainerService.HintSize="570,1663" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
               <ui:InterruptibleDoWhile.Body>
                 <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,1516" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -158,7 +136,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,175" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[targetItem.ToString()]" />
                   <ui:LogMessage DisplayName="Log Message – Product on current page" sap:VirtualizedContainerService.HintSize="502,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Verifying if the product in on the curent page&quot;]" />
-                  <ui:UiElementExists ContinueOnError="{x:Null}" DisplayName="Element Exists – Product Found" Exists="[bool_itemFound]" sap:VirtualizedContainerService.HintSize="502,119" sap2010:WorkflowViewState.IdRef="UiElementExists_3" Result="{x:Null}">
+                  <ui:UiElementExists DisplayName="Element Exists – Product Found" Exists="[bool_itemFound]" sap:VirtualizedContainerService.HintSize="502,119" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="34435f57-e9a1-4fbe-97ab-28e0465d1cc2" Selector="[string.Format(&quot;&lt;webctrl tag='A' visibleinnertext='{0}' /&gt;&quot;, targetItem)]" TimeoutMS="3000" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
@@ -172,7 +150,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message – Navigating To Next Page" sap:VirtualizedContainerService.HintSize="382,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;navigating to the next  page&quot;]" />
-                        <ui:Click AlterIfDisabled="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click – Next Page Button" sap:VirtualizedContainerService.HintSize="382,139" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="True" UnblockInput="{x:Null}">
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click – Next Page Button" sap:VirtualizedContainerService.HintSize="382,139" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                           <ui:Click.CursorPosition>
                             <ui:CursorPosition Position="Center">
                               <ui:CursorPosition.OffsetX>
@@ -201,7 +179,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:Click AlterIfDisabled="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="1000" DelayMS="{x:Null}" DisplayName="Click – Target Product" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="True" UnblockInput="{x:Null}">
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="1000" DisplayName="Click – Target Product" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                           <ui:Click.CursorPosition>
                             <ui:CursorPosition Position="Center">
                               <ui:CursorPosition.OffsetX>
@@ -241,7 +219,7 @@
                 </VisualBasicValue>
               </ui:InterruptibleDoWhile.Condition>
             </ui:InterruptibleDoWhile>
-            <ui:Click AlterIfDisabled="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click - Add to cart" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="True" UnblockInput="{x:Null}">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Add to cart" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -260,12 +238,56 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:UiElementExists ContinueOnError="{x:Null}" DisplayName="Element Exists - pop up" Exists="{x:Null}" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="UiElementExists_4" Result="{x:Null}">
+            <ui:UiElementExists DisplayName="Element Exists - pop up" Exists="[popUpLoaded]" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50756c31-083e-433a-b6fb-bb8977643689" InformativeScreenshot="aefa7884c384f85bfb4e6b97058496b5" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50756c31-083e-433a-b6fb-bb8977643689" InformativeScreenshot="aefa7884c384f85bfb4e6b97058496b5" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <ui:Click AlterIfDisabled="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click 'push button  OK'" sap:VirtualizedContainerService.HintSize="570,119" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="True" UnblockInput="{x:Null}">
+            <If Condition="[popUpLoaded]" DisplayName="If - Pop Up" sap:VirtualizedContainerService.HintSize="570,515" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  OK'" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e9c08699-ef41-4a92-a11a-ccbced92cd77" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw BE - Pop Up Missing" Exception="[new BusinessRuleException(&quot;The pop-up didn't appear&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Cart" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -277,35 +299,10 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e9c08699-ef41-4a92-a11a-ccbced92cd77" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;&lt;ctrl name='OK' role='push button' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c640df33-8b75-40fa-b923-3ac46f1200f8" InformativeScreenshot="c9bd5fdc9f3299d4ad81c3445d51f45a" Selector="&lt;webctrl id='cartur' tag='A' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:Click.Target>
-            </ui:Click>
-            <ui:Click AlterIfDisabled="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Click - Cart" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" UnblockInput="{x:Null}">
-              <ui:Click.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </ui:Click.CursorPosition>
-              <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c640df33-8b75-40fa-b923-3ac46f1200f8" InformativeScreenshot="c9bd5fdc9f3299d4ad81c3445d51f45a" Selector="&lt;webctrl id='cartur' tag='A' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
