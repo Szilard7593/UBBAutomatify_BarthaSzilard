@@ -117,7 +117,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2001" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,1826" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filtered" />
     </Sequence.Variables>
@@ -126,13 +126,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser DemoBlaze" sap:VirtualizedContainerService.HintSize="502,1978" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="902903a99122d1442987f359eaf2dc63" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser DemoBlaze" sap:VirtualizedContainerService.HintSize="502,1803" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="902903a99122d1442987f359eaf2dc63" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,1808" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,1633" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_All" />
             </Sequence.Variables>
@@ -142,7 +142,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message – Navigating To Home" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Navigating to home&quot;]" />
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click – Home Button" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click – Home Button from scraping" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -162,7 +162,7 @@
               </ui:Click.Target>
             </ui:Click>
             <ui:LogMessage DisplayName="Log Message – Extracting Data" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;extracting the data&quot;]" />
-            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - Products loaded" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eab269af-819b-40bb-a192-383bd775f5cd" Selector="&lt;webctrl tag='A' class='hrefch' parentid='tbodyid' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -181,7 +181,7 @@
               </ui:ExtractData.Target>
             </ui:ExtractData>
             <ui:LogMessage DisplayName="Log Message – Starting To Filter Data" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;starting to filter the data&quot;]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign DisplayName="Assign - Filtered Data Table" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_10">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[dt_filtered]</OutArgument>
               </Assign.To>
@@ -211,7 +211,7 @@
                 <InArgument x:TypeArguments="x:Int32">[CInt(dt_filtered.Rows(0)("price").ToString().Replace("$", "").Trim())]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign DisplayName="Assign - Target Item" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[out_targetItem]</OutArgument>
               </Assign.To>
@@ -238,8 +238,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:LogMessage DisplayName="Log Message – Target Data Obtained" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The target data was obtained&quot;]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[out_targetItem]" />
+            <ui:LogMessage DisplayName="Log Message – Target Data Obtained" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The target data was obtained&quot;]" />
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>

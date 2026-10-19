@@ -98,9 +98,9 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="638,3740" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="816,3565" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="bool_itemFound" />
+      <Variable x:TypeArguments="x:Boolean" Name="itemFound" />
       <Variable x:TypeArguments="x:String" Default="[in_targetItem]" Name="targetItem" />
       <Variable x:TypeArguments="x:Int32" Default="[in_targetPrice]" Name="targetPrice" />
     </Sequence.Variables>
@@ -109,13 +109,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="638,3717" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8825be9124736784da11010da8320786" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="638,3542" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8825be9124736784da11010da8320786" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,3547" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,3372" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="productPrice" />
               <Variable x:TypeArguments="x:String" Name="productName" />
@@ -126,22 +126,21 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While – Item Search" sap:VirtualizedContainerService.HintSize="570,1663" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While – Item Search" sap:VirtualizedContainerService.HintSize="570,1488" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
               <ui:InterruptibleDoWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,1516" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,1341" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,175" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[targetItem.ToString()]" />
                   <ui:LogMessage DisplayName="Log Message – Product on current page" sap:VirtualizedContainerService.HintSize="502,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Verifying if the product in on the curent page&quot;]" />
-                  <ui:UiElementExists DisplayName="Element Exists – Product Found" Exists="[bool_itemFound]" sap:VirtualizedContainerService.HintSize="502,119" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                  <ui:UiElementExists DisplayName="Element Exists – Product Found" Exists="[itemFound]" sap:VirtualizedContainerService.HintSize="502,119" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="34435f57-e9a1-4fbe-97ab-28e0465d1cc2" Selector="[string.Format(&quot;&lt;webctrl tag='A' visibleinnertext='{0}' /&gt;&quot;, targetItem)]" TimeoutMS="3000" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[Not bool_itemFound]" DisplayName="If – Item Not Found" sap:VirtualizedContainerService.HintSize="502,987" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[Not itemFound]" DisplayName="If – Item Not Found" sap:VirtualizedContainerService.HintSize="502,987" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
                       <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,540" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
@@ -200,7 +199,7 @@
                         </ui:Click>
                         <Assign DisplayName="Assign – Set Item Found True" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Boolean">[bool_itemFound]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Boolean">[itemFound]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:Boolean">True</InArgument>
@@ -212,7 +211,7 @@
                 </Sequence>
               </ui:InterruptibleDoWhile.Body>
               <ui:InterruptibleDoWhile.Condition>
-                <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="Not bool_itemFound" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1">
+                <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="Not itemFound" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1">
                   <VisualBasicValue.Result>
                     <OutArgument x:TypeArguments="x:Boolean" />
                   </VisualBasicValue.Result>
@@ -249,7 +248,7 @@
             </ui:UiElementExists>
             <If Condition="[popUpLoaded]" DisplayName="If - Pop Up" sap:VirtualizedContainerService.HintSize="570,515" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName=" Then - Do that" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -287,7 +286,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Cart" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Cart to see the item" sap:VirtualizedContainerService.HintSize="570,139" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -348,7 +347,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;The item is not the supposed one&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message - Inccorect Item" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;The item is not the supposed one&quot;]" />
                 </Sequence>
               </If.Else>
             </If>

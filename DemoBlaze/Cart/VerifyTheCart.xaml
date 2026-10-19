@@ -79,9 +79,9 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="VerifyTheCart" sap:VirtualizedContainerService.HintSize="654,3206" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="VerifyTheCart" sap:VirtualizedContainerService.HintSize="816,3206" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="bool_ItemExists" />
+      <Variable x:TypeArguments="x:Boolean" Name="itemExists" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -132,13 +132,13 @@
             <ui:LogMessage DisplayName="Log Message Click succes" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Click suscesull&quot;]" />
             <Delay DisplayName="Delay wait page load" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="586,123" sap2010:WorkflowViewState.IdRef="Delay_2" />
             <ui:LogMessage DisplayName="Log Message - Verify cart items" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Verifying items in cart&quot;]" />
-            <ui:UiElementExists DisplayName="Element Exists – Delete Button" Exists="[bool_ItemExists]" sap:VirtualizedContainerService.HintSize="586,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Element Exists – Delete Button Items in cart" Exists="[itemExists]" sap:VirtualizedContainerService.HintSize="586,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c37c63ca-8eba-4304-bcfb-070a736340ec" InformativeScreenshot="9267caf868686768e3114b00b677004d" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;&lt;webctrl aaname='Delete' tag='A' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
             <ui:LogMessage DisplayName="Log Message – Items Verified" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Items verified&quot;]" />
-            <If Condition="[bool_ItemExists]" DisplayName="If – Item Exists" sap:VirtualizedContainerService.HintSize="586,1713" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[itemExists]" DisplayName="If – Item Exists" sap:VirtualizedContainerService.HintSize="586,1713" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="552,1325" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
@@ -155,12 +155,12 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:UiElementExists DisplayName="Element Exists – Delete Button" Exists="[bool_ItemExists]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                        <ui:UiElementExists DisplayName="Element Exists – Delete Button" Exists="[itemExists]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                           <ui:UiElementExists.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9112f68d-0158-41ec-81a9-858999f14196" InformativeScreenshot="9267caf868686768e3114b00b677004d" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;&lt;webctrl aaname='Delete' tag='A' /&gt;" TimeoutMS="7000" WaitForReady="COMPLETE" />
                           </ui:UiElementExists.Target>
                         </ui:UiElementExists>
-                        <If Condition="[bool_ItemExists]" DisplayName="If – Item Exists" sap:VirtualizedContainerService.HintSize="450,578" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If Condition="[itemExists]" DisplayName="If – Item Exists" sap:VirtualizedContainerService.HintSize="450,578" sap2010:WorkflowViewState.IdRef="If_2">
                           <If.Then>
                             <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,190" sap2010:WorkflowViewState.IdRef="Sequence_6">
                               <sap:WorkflowViewStateService.ViewState>
@@ -168,7 +168,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="2000" DisplayName="Click – Delete Button" sap:VirtualizedContainerService.HintSize="382,130" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                              <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="2000" DisplayName="Click – Delete Button" sap:VirtualizedContainerService.HintSize="382,130" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                                 <ui:Click.CursorPosition>
                                   <ui:CursorPosition Position="Center">
                                     <ui:CursorPosition.OffsetX>
@@ -203,10 +203,10 @@
                       </Sequence>
                     </ui:InterruptibleWhile.Body>
                     <ui:InterruptibleWhile.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="bool_ItemExists" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                      <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="itemExists" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                     </ui:InterruptibleWhile.Condition>
                   </ui:InterruptibleWhile>
-                  <ui:LogMessage DisplayName="Log Message – All Items Were Removed" sap:VirtualizedContainerService.HintSize="518,166" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;All items were removed&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message – No items t oremove" sap:VirtualizedContainerService.HintSize="518,166" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;All items were removed&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
