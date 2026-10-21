@@ -109,6 +109,7 @@
       <Variable x:TypeArguments="x:String" Name="loggedInUsername" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="logIn" />
       <Variable x:TypeArguments="x:Boolean" Name="pageLoaded" />
+      <Variable x:TypeArguments="x:String" Name="retrievedUsername" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,7 +128,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While - User Not Logged In" sap:VirtualizedContainerService.HintSize="1843.5,2540" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While - User Not Logged In" sap:VirtualizedContainerService.HintSize="1843.5,2572" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
               <ui:InterruptibleWhile.Body>
                 <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1809.5,2425" sap2010:WorkflowViewState.IdRef="Sequence_32">
                   <sap:WorkflowViewStateService.ViewState>
@@ -137,36 +138,30 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists - Page loaded" Exists="[pageLoaded]" sap:VirtualizedContainerService.HintSize="1775.5,139" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f01f462-45c9-4a98-ac46-13cea133e334" InformativeScreenshot="9dd13a54f6b473971ff2416fc6af186a" Selector="&lt;webctrl parentid='tbodyid' tag='A' idx='1' /&gt;" WaitForReady="COMPLETE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f01f462-45c9-4a98-ac46-13cea133e334" InformativeScreenshot="9dd13a54f6b473971ff2416fc6af186a" Selector="&lt;webctrl id='nameofuser' tag='A' aaname='Welcome *' visibleinnertext='Welcome *' style='display: block;' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
                       </ui:Target>
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[pageLoaded]" DisplayName="If - Web Page Loaded" sap:VirtualizedContainerService.HintSize="1775.5,2226" sap2010:WorkflowViewState.IdRef="If_8">
+                  <If Condition="True" DisplayName="If - Web Page Loaded" sap:VirtualizedContainerService.HintSize="1775.5,2226" sap2010:WorkflowViewState.IdRef="If_8">
                     <If.Then>
                       <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1741.5,1890" sap2010:WorkflowViewState.IdRef="Sequence_43">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="retrievedUsername" />
-                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Pick sap:VirtualizedContainerService.HintSize="1707.5,1830" sap2010:WorkflowViewState.IdRef="Pick_2">
+                        <Pick DisplayName="Pick - Outcome User" sap:VirtualizedContainerService.HintSize="1707.5,1830" sap2010:WorkflowViewState.IdRef="Pick_2">
                           <PickBranch DisplayName="PickBranch - Logged In" sap:VirtualizedContainerService.HintSize="626,1760" sap2010:WorkflowViewState.IdRef="PickBranch_4">
                             <PickBranch.Trigger>
-                              <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists" sap:VirtualizedContainerService.HintSize="536,87" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+                              <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - Log out element" sap:VirtualizedContainerService.HintSize="536,87" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
                                 <ui:UiElementExists.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6a64a3dc-31b9-4c69-90de-9c9f37389f36" Selector="&lt;webctrl id='nameofuser' tag='A' aaname='Welcome *' visibleinnertext='Welcome *' /&gt;">
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6a64a3dc-31b9-4c69-90de-9c9f37389f36" Selector="&lt;webctrl id='nameofuser' tag='A' aaname='Welcome *' visibleinnertext='Welcome *' /&gt;" WaitForReady="COMPLETE">
                                     <ui:Target.TimeoutMS>
                                       <InArgument x:TypeArguments="x:Int32" />
                                     </ui:Target.TimeoutMS>
-                                    <ui:Target.WaitForReady>
-                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                    </ui:Target.WaitForReady>
                                   </ui:Target>
                                 </ui:UiElementExists.Target>
                               </ui:UiElementExists>
@@ -179,7 +174,7 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get text User welcome message" sap:VirtualizedContainerService.HintSize="502,139" sap2010:WorkflowViewState.IdRef="GetValue_12">
                                 <ui:GetValue.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8590fa43-60be-4068-96aa-861e21a93d08" InformativeScreenshot="59c1b77bc81d7d82837072bf15e4910e" Selector="&lt;webctrl id='logout2' tag='A' /&gt;&lt;nav up='2' /&gt;&lt;webctrl id='nameofuser' tag='A' aaname='Welcome *' visibleinnertext='Welcome *' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8590fa43-60be-4068-96aa-861e21a93d08" InformativeScreenshot="59c1b77bc81d7d82837072bf15e4910e" Selector="&lt;webctrl id='nameofuser' tag='A' aaname='Welcome *' visibleinnertext='Welcome *' /&gt;" WaitForReady="COMPLETE">
                                     <ui:Target.TimeoutMS>
                                       <InArgument x:TypeArguments="x:Int32" />
                                     </ui:Target.TimeoutMS>
@@ -262,15 +257,12 @@
                               <Variable x:TypeArguments="ss:SecureString" Name="retrievedPassword" />
                             </PickBranch.Variables>
                             <PickBranch.Trigger>
-                              <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists" sap:VirtualizedContainerService.HintSize="468,87" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
+                              <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - Sign In Button" sap:VirtualizedContainerService.HintSize="468,87" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
                                 <ui:UiElementExists.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="533aca36-e23d-4c14-a484-a471ffceffb1" Selector="&lt;webctrl id='login2' tag='A' aaname='Log in' visibleinnertext='Log in' /&gt;">
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="533aca36-e23d-4c14-a484-a471ffceffb1" Selector="&lt;webctrl id='signin2' tag='A' aaname='Sign up' visibleinnertext='Sign up' /&gt;" WaitForReady="COMPLETE">
                                     <ui:Target.TimeoutMS>
                                       <InArgument x:TypeArguments="x:Int32" />
                                     </ui:Target.TimeoutMS>
-                                    <ui:Target.WaitForReady>
-                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                    </ui:Target.WaitForReady>
                                   </ui:Target>
                                 </ui:UiElementExists.Target>
                               </ui:UiElementExists>
