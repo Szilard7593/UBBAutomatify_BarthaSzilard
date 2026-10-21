@@ -92,6 +92,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
+      <Variable x:TypeArguments="x:String" Name="foundUrls" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,13 +115,14 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Scrape products table" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DemoBlaze\Products\ScrapeProductsTable.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Scrape products table" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="DemoBlaze\Products\ScrapeProductsTable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_brand">[in_brand]</InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_minPrice">[in_min]</InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_maxPrice">[in_max]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_targetItem">[foundItem]</OutArgument>
         <OutArgument x:TypeArguments="x:Int32" x:Key="out_targetPrice">[foundPrice]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_targetUrl">[foundUrls]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add product to cart" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DemoBlaze\Cart\AddToCart.xaml">
