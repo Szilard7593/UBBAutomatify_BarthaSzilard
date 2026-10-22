@@ -85,6 +85,11 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="NavigateToHome" sap:VirtualizedContainerService.HintSize="816,1902" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -157,7 +162,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[Not String.IsNullOrWhiteSpace(in_category)]" DisplayName="If - Category is provided" sap:VirtualizedContainerService.HintSize="518,976" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Not String.IsNullOrWhiteSpace(in_category) AndAlso {&quot;phones&quot;, &quot;laptops&quot;, &quot;monitors&quot;}.Contains(in_category.Trim.ToLower)]" DisplayName="If - Category is provided" sap:VirtualizedContainerService.HintSize="518,976" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,724" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
