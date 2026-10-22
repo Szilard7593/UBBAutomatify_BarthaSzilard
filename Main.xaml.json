@@ -6,42 +6,6 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "in_min",
-      "DisplayName": "in_min",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "100",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_max",
-      "DisplayName": "in_max",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "1800",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_brand",
-      "DisplayName": "in_brand",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "Iphone",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_poFilePath",
       "DisplayName": "in_poFilePath",
       "Category": null,
