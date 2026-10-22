@@ -5,6 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Credentials.Activities": "[3.1.0-preview]",
+    "UiPath.Mail.Activities": "[1.12.2]",
     "UiPath.System.Activities": "[24.10.8]",
     "UiPath.UIAutomation.Activities": "[26.10.4]"
   },
@@ -53,13 +54,12 @@
       "input": [],
       "output": []
     },
-{
+    {
       "filePath": "PerformLogin.xaml",
       "uniqueId": "71c8491b-a758-4030-b01f-8ad58bdeb7af",
       "input": [],
       "output": []
     }
-    
   ],
   "isTemplate": false,
   "templateProjectData": {},
