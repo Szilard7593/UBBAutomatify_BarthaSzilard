@@ -40,6 +40,18 @@
       "IsPrincipal": true,
       "ArgumentType": 0,
       "DataSourceItems": null
+    },
+    {
+      "Name": "in_poFilePath",
+      "DisplayName": "in_poFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "C:\\Users\\USER\\Downloads\\FixMyWorkflow_StartingProject\\UBBAutomatify_BarthaSzilard1\\PO.xlsx",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
     }
   ]
 }
