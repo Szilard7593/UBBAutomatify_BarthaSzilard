@@ -141,7 +141,7 @@
             </ui:Click>
             <ui:UiElementExists DisplayName="Element Exists - Order Modal Name field" Exists="[isOrderModalOpen]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="02d881b3-1c29-42e2-b0d8-029001196f33" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02d881b3-1c29-42e2-b0d8-029001196f33" Selector="&lt;webctrl id='name' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
