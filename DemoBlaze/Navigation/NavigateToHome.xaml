@@ -186,7 +186,7 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="947ae4f2-e31f-49a5-ada0-5d4bc9312328" Selector="[string.Format(&quot;&lt;webctrl id='itemc' tag='A' aaname='{0}' /&gt;&quot;, in_category)]" WaitForReady="COMPLETE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="947ae4f2-e31f-49a5-ada0-5d4bc9312328" Selector="&lt;webctrl id='itemc' tag='A' aaname='{{in_category}}' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>

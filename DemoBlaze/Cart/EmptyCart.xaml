@@ -79,7 +79,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EmptyCart" sap:VirtualizedContainerService.HintSize="586,1128" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EmptyCart" sap:VirtualizedContainerService.HintSize="816,1128" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -110,7 +110,11 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists - Delete Button" Exists="[itemExists]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f38c974d-8982-4b98-90d2-887f81cd082f" Selector="&lt;webctrl aaname='Delete' tag='A' /&gt;" TimeoutMS="7000" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f38c974d-8982-4b98-90d2-887f81cd082f" Selector="&lt;webctrl aaname='Delete' tag='A' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
                   <If Condition="[itemExists]" DisplayName="If - Delete Button Exists" sap:VirtualizedContainerService.HintSize="450,558" sap2010:WorkflowViewState.IdRef="If_1">
