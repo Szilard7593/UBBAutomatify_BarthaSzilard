@@ -102,9 +102,12 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PerformLogin" sap:VirtualizedContainerService.HintSize="1853.9999999999998,2409" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PerformLogin" sap:VirtualizedContainerService.HintSize="1854,2409" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="retrievedUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="retrievedPassword" />
