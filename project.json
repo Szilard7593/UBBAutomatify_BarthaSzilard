@@ -4,6 +4,8 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Excel.Activities": "[2.16.0]",
+    "UiPath.Mail.Activities": "[1.12.2]",
     "UiPath.System.Activities": "[24.10.8]",
     "UiPath.UIAutomation.Activities": "[26.10.4]"
   },
