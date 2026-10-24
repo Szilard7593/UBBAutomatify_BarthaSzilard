@@ -129,9 +129,6 @@
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1820,1865" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="ui:UiElement" Name="fullyLoaded" />
-            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -297,11 +294,7 @@
                         </ui:Click>
                         <ui:UiElementExists DisplayName="Element Exists - Login Error Pop Up" Exists="[isLogginErrorPopUp]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                           <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ad9edb3a-37ff-4bb5-b7b9-4c0d2ab77ec5" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;" WaitForReady="COMPLETE">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                            </ui:Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ad9edb3a-37ff-4bb5-b7b9-4c0d2ab77ec5" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='STORE*' /&gt;&lt;ctrl name='*says' role='dialog' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
                           </ui:UiElementExists.Target>
                         </ui:UiElementExists>
                         <If Condition="[isLogginErrorPopUp]" DisplayName="If - Login Error Pop Up Appeard" sap:VirtualizedContainerService.HintSize="450,545" sap2010:WorkflowViewState.IdRef="If_2">
