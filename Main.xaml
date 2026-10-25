@@ -103,7 +103,7 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,4665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,4842" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
@@ -128,6 +128,13 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start Process " sap:VirtualizedContainerService.HintSize="638,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Starting the process&quot;]" />
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_purchaseOrder]" DisplayName="Read Range Workbook - Read PO file" sap:VirtualizedContainerService.HintSize="638,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[in_poFilePath]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ValidatePO - Invoke Workflow File (Data\ValidatePO.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Data\ValidatePO.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_purchaseOrder">[dt_purchaseOrder]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_validPO">[dt_purchaseOrder]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_skippedRows" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:BuildDataTable DataTable="[dt_expectedCart]" DisplayName="Build Data Table - Initialize expedted cart data table" sap:VirtualizedContainerService.HintSize="638,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Price&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OpenDemoBlaze - Invoke Workflow File (DemoBlaze\Navigation\OpenDemoBlaze.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DemoBlaze\Navigation\OpenDemoBlaze.xaml">
       <ui:InvokeWorkflowFile.Arguments>
@@ -185,7 +192,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[currentMinPrice]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("Min price per unit").ToString.Trim)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("minPrice").ToString.Trim)]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -193,7 +200,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[currentMaxPrice]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("Max price per unit").ToString.Trim)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(CurrentRow("maxPrice").ToString.Trim)]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
