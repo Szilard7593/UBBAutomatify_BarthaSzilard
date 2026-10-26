@@ -25,6 +25,10 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -94,7 +98,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[out_dt_validPO]" DisplayName="Build Data Table - Valid Purchase Order" sap:VirtualizedContainerService.HintSize="570,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Category&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Brand&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Qty&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;minPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;maxPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:BuildDataTable DataTable="[out_dt_validPO]" DisplayName="Build Data Table - Valid Purchase Order" sap:VirtualizedContainerService.HintSize="570,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Category&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Brand&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Qty&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;minPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;maxPrice&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <Assign DisplayName="Assign - Skipped rows" sap:VirtualizedContainerService.HintSize="570,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_skippedRows]</OutArgument>
@@ -154,6 +158,7 @@
               <Assign.Value>
                 <InArgument x:TypeArguments="x:Boolean" xml:space="preserve">[{"phones","laptops","monitors"}.Contains(row("Category").ToString.Trim.ToLower) AndAlso
           Not String.IsNullOrWhiteSpace(row("Brand").ToString) AndAlso
+		  Not {row("Category").ToString.Trim.ToLower, row("Category").ToString.Trim.ToLower.TrimEnd("s"c)}.Contains(row("Brand").ToString.Trim.ToLower) AndAlso
           Integer.TryParse(row("Qty").ToString.Trim, qty) AndAlso
           Integer.TryParse(row("Min price per unit").ToString.Trim, minPrice) AndAlso
           Integer.TryParse(row("Max price per unit").ToString.Trim, maxPrice) AndAlso
@@ -168,7 +173,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {row(0).ToString.Trim, row(1).ToString.Trim, CInt(row(2)), CInt(row(3)), CInt(row(4))}]" DataTable="[out_dt_validPO]" DisplayName="Add Data Row - Valid data row" sap:VirtualizedContainerService.HintSize="382,212" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {row(&quot;Category&quot;).ToString.Trim, row(&quot;Brand&quot;).ToString.Trim, CInt(row(&quot;Qty&quot;)), CInt(row(&quot;Min price per unit&quot;)), CInt(row(&quot;Max price per unit&quot;))}]" DataTable="[out_dt_validPO]" DisplayName="Add Data Row - Valid data row" sap:VirtualizedContainerService.HintSize="382,212" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -186,7 +191,7 @@
                       <InArgument x:TypeArguments="x:String">[out_skippedRows &amp; "Excel row " &amp; (rowIndex + 2).ToString &amp; ": " &amp; String.Join(" | ", row.ItemArray.Select(Function(x) x.ToString)) &amp; Environment.NewLine]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message - Invalid row" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipping invalid PO row &quot; &amp; (rowIndex + 2).ToString]" />
+                  <ui:LogMessage DisplayName="Log Message - Invalid row" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipping invalid PO row &quot; &amp; (rowIndex+1).ToString]" />
                 </Sequence>
               </If.Else>
             </If>
@@ -194,7 +199,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <If Condition="[out_dt_validPO.Rows.Count = 0]" DisplayName="If - No Valid Rows" sap:VirtualizedContainerService.HintSize="570,562" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[out_dt_validPO.Rows.Count  = 0]" DisplayName="If - No Valid Rows" sap:VirtualizedContainerService.HintSize="570,562" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
