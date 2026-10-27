@@ -101,6 +101,9 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Reads Data\Config.xlsx (sheet Settings, columns Name/Value) into a Dictionary(Of String, String). Fails with a BusinessRuleException if a required key is missing. Never logs values (they may be sensitive)." DisplayName="ReadConfig" sap:VirtualizedContainerService.HintSize="816,1203" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -129,7 +132,7 @@
         <OutArgument x:TypeArguments="scg:List(x:String)">[missingKeys]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="scg:List(x:String)">[{"PoFilePath","PoSheetName","AllowedCategories","BaseUrl","OrchestratorFolder","LoginAssetName","SmtpAssetName","SmtpServer","SmtpPort","EmailRecipient","EmailSubject","CustomerName","CustomerCountry","CustomerCity","CardNumber","CardMonth","CardYear","LoginPopupTimeoutMS","LoginStateTimeoutSeconds"}.Where(Function(k) Not dictionaryConfig.ContainsKey(k)).ToList]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)">[{"in_name","in_country","in_city","in_creditCart","in_month","in_year","in_recipientEmail","in_emailSubject","in_smptServer","in_smptPort","orchestratorFolder","loginAssetName","smtpAssetName","allowedCategories"}.Where(Function(k) Not dictionaryConfig.ContainsKey(k)).ToList]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[missingKeys.Any]" DisplayName="If - Config Keys Missing" sap:VirtualizedContainerService.HintSize="450,374" sap2010:WorkflowViewState.IdRef="If_1">

@@ -22,6 +22,7 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -87,7 +88,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,5891" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,6068" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
@@ -113,14 +114,26 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start Process " sap:VirtualizedContainerService.HintSize="710,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Starting the process&quot;]" />
-    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="710,5693" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="710,5870" sap2010:WorkflowViewState.IdRef="TryCatch_5">
       <TryCatch.Try>
-        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="672,4703" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="672,4880" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="config">
+              <Variable.Default>
+                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="New Dictionary(Of String, String)" />
+              </Variable.Default>
+            </Variable>
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadConfig - Invoke Workflow File (Data\ReadConfig.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Data\ReadConfig.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_config">[config]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_initialPO]" DisplayName="Read Range Workbook - Read PO file" sap:VirtualizedContainerService.HintSize="638,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="PO.xlsx" />
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ValidatePO - Invoke Workflow File (Data\ValidatePO.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Data\ValidatePO.xaml">
             <ui:InvokeWorkflowFile.Arguments>
@@ -315,12 +328,12 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PlaceOrder - Invoke Workflow File (DemoBlaze\Cart\PlaceOrder.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="DemoBlaze\Cart\PlaceOrder.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_name" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_country" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_city" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_creditCart" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_month" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_year" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_name">[config("in_name")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_country">[config("in_country")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_city">[config("in_city")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_creditCart">[config("in_creditCart")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_month">[config("in_month")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_year">[config("in_year")]</InArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_screenshotPath">[screenShotPath]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
@@ -334,12 +347,12 @@
           </Assign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendConfirmationEmail - Invoke Workflow File (Email\SendConfirmationEmail.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Email\SendConfirmationEmail.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_recipientEmail">szilard.bartha@stud.ubbcluj.ro</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_recipientEmail">[config("in_recipientEmail")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_screenShotPath">[screenShotPath]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_emailSubject" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_emailSubject">[config("in_emailSubject")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[emailBody]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_smptServer" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_smptPort" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_smptServer">[config("in_smptServer")]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_smptPort">[CInt(config("in_smptPort"))]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:LogMessage DisplayName="Log Message - Process Done" sap:VirtualizedContainerService.HintSize="638,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process was completed succesfully&quot;]" />
