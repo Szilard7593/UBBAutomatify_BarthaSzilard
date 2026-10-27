@@ -96,7 +96,7 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,4842" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,4841" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
@@ -114,6 +114,7 @@
       <Variable x:TypeArguments="x:Int32" Name="currentQty" />
       <Variable x:TypeArguments="x:Int32" Name="qtyCounter" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_initialPO" />
+      <Variable x:TypeArguments="x:String" Name="skippedRows" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -126,7 +127,7 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_purchaseOrder">[dt_initialPO]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_validPO">[dt_purchaseOrder]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_skippedRows" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_skippedRows">[skippedRows]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:BuildDataTable DataTable="[dt_expectedCart]" DisplayName="Build Data Table - Initialize expedted cart data table" sap:VirtualizedContainerService.HintSize="638,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Price&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
@@ -324,17 +325,12 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_screenshotPath">[screenShotPath]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="638,116" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">["Hello," &amp; Environment.NewLine &amp; Environment.NewLine &amp;
-            "The Purchase Order has been processed and placed successfully on DemoBlaze." &amp; Environment.NewLine &amp; Environment.NewLine &amp;
-            "Order Details:" &amp; Environment.NewLine &amp;
-            orderSumaryText &amp; Environment.NewLine &amp;
-            "Total Order Value: $" &amp; totalOrderAmount.ToString &amp; Environment.NewLine &amp; Environment.NewLine &amp;
-            "Please find the purchase confirmation screenshot attached."]</InArgument>
+        <InArgument x:TypeArguments="x:String">["Hello," &amp; Environment.NewLine &amp; Environment.NewLine &amp; "The Purchase Order has been processed and placed on DemoBlaze." &amp; Environment.NewLine &amp; Environment.NewLine &amp; "Order Details:" &amp; Environment.NewLine &amp; orderSumaryText &amp; Environment.NewLine &amp; "Total Order Value: $" &amp; totalOrderAmount.ToString() &amp; Environment.NewLine &amp; Environment.NewLine &amp; If(String.IsNullOrWhiteSpace(skippedRows), "", "Skipped PO rows (invalid data):" &amp; Environment.NewLine &amp; skippedRows &amp; Environment.NewLine) &amp; "Please find the purchase confirmation screenshot attached."]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendConfirmationEmail - Invoke Workflow File (Email\SendConfirmationEmail.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Email\SendConfirmationEmail.xaml">
@@ -345,8 +341,6 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[emailBody]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_smptServer" />
         <InArgument x:TypeArguments="x:Int32" x:Key="in_smptPort" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_credentialAssetName" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_orchestratorFolder" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message - Process Done" sap:VirtualizedContainerService.HintSize="638,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process was completed succesfully&quot;]" />
