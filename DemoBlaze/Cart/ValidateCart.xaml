@@ -242,7 +242,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - Cart validation succes" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;All cart items matches the purchaase order&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message - Cart validation succes" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Fatal" Message="[&quot;All cart items matches the purchaase order&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
