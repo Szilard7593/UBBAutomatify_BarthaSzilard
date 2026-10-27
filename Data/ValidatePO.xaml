@@ -191,7 +191,7 @@
                       <InArgument x:TypeArguments="x:String">[out_skippedRows &amp; "Excel row " &amp; (rowIndex + 2).ToString &amp; ": " &amp; String.Join(" | ", row.ItemArray.Select(Function(x) x.ToString)) &amp; Environment.NewLine]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message - Invalid row" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipping invalid PO row &quot; &amp; (rowIndex+1).ToString]" />
+                  <ui:LogMessage DisplayName="Log Message - Invalid row" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipping invalid PO row &quot; &amp; (rowIndex+2).ToString]" />
                 </Sequence>
               </If.Else>
             </If>

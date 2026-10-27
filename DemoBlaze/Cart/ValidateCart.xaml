@@ -114,7 +114,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidateCart" sap:VirtualizedContainerService.HintSize="816,2710" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidateCart" sap:VirtualizedContainerService.HintSize="816,2846" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_actualCart" />
       <Variable x:TypeArguments="x:Boolean" Name="areCartItemsLoaded" />
@@ -125,13 +125,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze Store" sap:VirtualizedContainerService.HintSize="518,2687" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7d5d37371d202b0594f1314164de279d" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze Store" sap:VirtualizedContainerService.HintSize="518,2823" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7d5d37371d202b0594f1314164de279d" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,2517" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,2653" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:List(x:String)" Name="expectedKeys" />
               <Variable x:TypeArguments="scg:List(x:String)" Name="actualKeys" />
@@ -142,7 +142,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[in_dt_expectedCart.Rows.Count = 0]" DisplayName="If - Nothing in expected cart" sap:VirtualizedContainerService.HintSize="450,539" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[in_dt_expectedCart.Rows.Count = 0]" DisplayName="If - Nothing in expected cart" sap:VirtualizedContainerService.HintSize="450,571" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -173,13 +173,9 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <ui:WaitUiElementAppear WaitActive="{x:Null}" DisplayName="Find Element - Total amount " FoundElement="[totalElement]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1" WaitVisible="True">
+            <ui:WaitUiElementAppear WaitActive="{x:Null}" ContinueOnError="True" DisplayName="Find Element - Total amount " FoundElement="[totalElement]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1" WaitVisible="True">
               <ui:WaitUiElementAppear.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="24531713-eabd-46cc-981d-c4c2a3e540fb" InformativeScreenshot="441691527d5c4e7f0ca056c7fd91906a" Selector="&lt;webctrl id='totalp' tag='H3' /&gt;" WaitForReady="COMPLETE">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                </ui:Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="24531713-eabd-46cc-981d-c4c2a3e540fb" InformativeScreenshot="441691527d5c4e7f0ca056c7fd91906a" Selector="&lt;webctrl id='totalp' tag='H3' /&gt;" TimeoutMS="10000" WaitForReady="COMPLETE" />
               </ui:WaitUiElementAppear.Target>
             </ui:WaitUiElementAppear>
             <ui:WaitAttribute TimeoutMS="{x:Null}" Attribute="innerText" AttributeValue="[in_expectedTotal.ToString]" DisplayName="Wait Attribute - Total amount" Element="[totalElement]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="WaitAttribute_1" />
