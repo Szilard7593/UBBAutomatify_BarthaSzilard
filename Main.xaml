@@ -96,7 +96,7 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,4841" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="816,5018" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="foundItem" />
       <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
@@ -325,7 +325,7 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_screenshotPath">[screenShotPath]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="638,115" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
       </Assign.To>
@@ -341,6 +341,11 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[emailBody]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_smptServer" />
         <InArgument x:TypeArguments="x:Int32" x:Key="in_smptPort" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CloseDemoBlaze - Invoke Workflow File (DemoBlaze\Navigation\CloseDemoBlaze.xaml)" sap:VirtualizedContainerService.HintSize="638,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="DemoBlaze\Navigation\CloseDemoBlaze.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message - Process Done" sap:VirtualizedContainerService.HintSize="638,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process was completed succesfully&quot;]" />
