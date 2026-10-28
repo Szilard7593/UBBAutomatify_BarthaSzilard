@@ -215,7 +215,7 @@
                 <OutArgument x:TypeArguments="scg:List(x:String)">[expectedKeys]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="scg:List(x:String)">[in_dt_expectedCart.AsEnumerable().Select(Function(r) r("Title").ToString().Trim().ToLower() &amp; "|" &amp; r("Price").ToString().Replace("$", String.Empty).Trim()).ToList()]</InArgument>
+                <InArgument x:TypeArguments="scg:List(x:String)">[in_dt_expectedCart.AsEnumerable().Select(Function(r) r("Title").ToString.Trim.ToLower &amp; "|" &amp; r("Price").ToString.Replace("$", String.Empty).Trim).OrderBy(Function(k) k, StringComparer.Ordinal).ToList]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign DisplayName="Assign - Actual Keys" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -223,7 +223,7 @@
                 <OutArgument x:TypeArguments="scg:List(x:String)">[actualKeys]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="scg:List(x:String)">[dt_actualCart.AsEnumerable().Select(Function(r) r("Title").ToString.Trim.ToLower &amp; "|" &amp; r("Price").ToString.Trim("$"c)).OrderBy(Function(k) k).ToList]</InArgument>
+                <InArgument x:TypeArguments="scg:List(x:String)">[dt_actualCart.AsEnumerable().Select(Function(r) r("Title").ToString.Trim.ToLower &amp; "|" &amp; r("Price").ToString.Replace("$", String.Empty).Trim).OrderBy(Function(k) k, StringComparer.Ordinal).ToList]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign DisplayName="Assign - Validate cart against purchase orde" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_1">
