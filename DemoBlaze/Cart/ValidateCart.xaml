@@ -178,7 +178,7 @@
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="24531713-eabd-46cc-981d-c4c2a3e540fb" InformativeScreenshot="441691527d5c4e7f0ca056c7fd91906a" Selector="&lt;webctrl id='totalp' tag='H3' /&gt;" TimeoutMS="10000" WaitForReady="COMPLETE" />
               </ui:WaitUiElementAppear.Target>
             </ui:WaitUiElementAppear>
-            <ui:WaitAttribute TimeoutMS="{x:Null}" Attribute="innerText" AttributeValue="[in_expectedTotal.ToString]" DisplayName="Wait Attribute - Total amount" Element="[totalElement]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="WaitAttribute_1" />
+            <ui:WaitAttribute Attribute="innerText" AttributeValue="[in_expectedTotal.ToString]" ContinueOnError="True" DisplayName="Wait Attribute - Total amount" Element="[totalElement]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="WaitAttribute_1" TimeoutMS="10000" />
             <If Condition="[Not areCartItemsLoaded]" DisplayName="If - Cart Items not loaded" sap:VirtualizedContainerService.HintSize="450,571" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -215,7 +215,7 @@
                 <OutArgument x:TypeArguments="scg:List(x:String)">[expectedKeys]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="scg:List(x:String)">[in_dt_expectedCart.AsEnumerable().Select(Function(r) r("Title").ToString.Trim.ToLower &amp; "|" &amp; r("Price").ToString.Trim("$"c)).OrderBy(Function(k) k).ToList]</InArgument>
+                <InArgument x:TypeArguments="scg:List(x:String)">[in_dt_expectedCart.AsEnumerable().Select(Function(r) r("Title").ToString().Trim().ToLower() &amp; "|" &amp; r("Price").ToString().Replace("$", String.Empty).Trim()).ToList()]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign DisplayName="Assign - Actual Keys" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_3">

@@ -193,7 +193,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[out_targetPrice]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt(dt_filtered.Rows(0)("Price").ToString().Replace("$", "").Trim())]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(dt_filtered.Rows(0)("Price").ToString().Replace("$", String.Empty).Trim())]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign DisplayName="Assign - Target Urls" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_16">
@@ -213,7 +213,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - There are no such items" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;There are no such items&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message - There are no such items" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;There are no such items&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
