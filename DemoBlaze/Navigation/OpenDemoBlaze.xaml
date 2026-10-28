@@ -100,7 +100,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window - DemoBlaze" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
             <ui:UiElementExists DisplayName="Element Exists - Navigation Bar" Exists="[isNavBarLoaded]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="25cba8fd-7c00-442a-aeb8-72133b0e2e39" InformativeScreenshot="76ed97bf8e546d043203255a3de79bed" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;&lt;webctrl id='nava' tag='A' /&gt;" WaitForReady="COMPLETE">
