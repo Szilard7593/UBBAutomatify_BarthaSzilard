@@ -119,7 +119,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,1292" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,1863" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filtered" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AllProducts" />
@@ -129,13 +129,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="570,1269" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="570,1840" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,1099" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,1670" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -150,6 +150,28 @@
                 </ui:Target>
               </ui:ExtractData.Target>
             </ui:ExtractData>
+            <If Condition="[dt_AllProducts.Rows.Count &gt; 8]" DisplayName="If - Page May Have Next" sap:VirtualizedContainerService.HintSize="502,571" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw SE - Possible Next Page" Exception="[new SystemException(&quot;Extracted &quot; &amp; dt_AllProducts.Rows.Count.ToString &amp; &quot; products (a full page). The category may continue on a next page, which is not extracted.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Next slector is not needed" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;we don't need the next button&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
             <Assign DisplayName="Assign - Filter Products by brand and price" sap:VirtualizedContainerService.HintSize="502,116" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[dt_filtered]</OutArgument>
@@ -213,7 +235,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - There are no such items" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;There are no such items&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message - There are no such items" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;No product found for brand '&quot; &amp; in_brand &amp; &quot;' between &quot; &amp; in_minPrice.ToString &amp; &quot; and &quot; &amp; in_maxPrice.ToString]" />
                 </Sequence>
               </If.Else>
             </If>
