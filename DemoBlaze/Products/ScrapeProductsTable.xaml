@@ -119,7 +119,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2123" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2238" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filtered" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AllProducts" />
@@ -129,19 +129,19 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" BrowserType="Edge" ContinueOnError="{x:Null}" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="570,2100" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" SearchScope="{x:Null}" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;" TimeoutMS="{x:Null}" UiBrowser="{x:Null}">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="570,2215" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,1930" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,2045" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="458,482" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:01">
+            <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - until is within the range 0 &lt; items &lt; 9" sap:VirtualizedContainerService.HintSize="502,514" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="7" RetryInterval="00:00:02">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,190" sap2010:WorkflowViewState.IdRef="Sequence_24">
@@ -150,7 +150,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExtractData ContinueOnError="{x:Null}" DataTable="[dt_AllProducts]" DelayBetweenPagesMS="{x:Null}" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="382,130" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" NextLinkSelector="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="True">
+                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" DataTable="[dt_AllProducts]" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="382,130" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" SimulateClick="True">
                       <ui:ExtractData.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76515207-1446-4c08-b5e8-f8e663457871" InformativeScreenshot="492b0430a74ceca797ca6b48ec79f56f" Selector="&lt;webctrl id='tbodyid' tag='DIV' /&gt;" WaitForReady="COMPLETE">
                           <ui:Target.TimeoutMS>
@@ -164,7 +164,7 @@
               </ui:RetryScope.ActivityBody>
               <ui:RetryScope.Condition>
                 <ActivityFunc x:TypeArguments="x:Boolean">
-                  <ui:CheckTrue DisplayName="Check True" ErrorMessage="System.Exception: Action failed to achieve completion condition" Expression="[dt_AllProducts IsNot Nothing AndAlso dt_AllProducts.Rows.Count &gt; 0 AndAlso dt_AllProducts.Rows.Count &lt; 9]" sap:VirtualizedContainerService.HintSize="416,131" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+                  <ui:CheckTrue DisplayName="Check True - Not more than 8 items on page" ErrorMessage="System.Exception: Action failed to achieve completion condition" Expression="[dt_AllProducts IsNot Nothing AndAlso dt_AllProducts.Rows.Count &gt; 0 AndAlso dt_AllProducts.Rows.Count &lt; 9]" sap:VirtualizedContainerService.HintSize="416,131" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
                 </ActivityFunc>
               </ui:RetryScope.Condition>
             </ui:RetryScope>
