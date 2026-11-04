@@ -123,7 +123,7 @@
             </ui:Click>
             <ui:UiElementExists DisplayName="Element Exists - Log In Button" Exists="[isLogOutSuccesfull]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="936e7992-09aa-4207-a501-9f4ae0853ad4" Selector="&lt;webctrl id='login2' tag='A' visibleinnertext='Log in' /&gt;" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="936e7992-09aa-4207-a501-9f4ae0853ad4" Selector="&lt;webctrl id='login2' tag='A' style='display: block;' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
