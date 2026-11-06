@@ -121,7 +121,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2353" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_filtered" />
+      <Variable x:TypeArguments="sd:DataRow" Name="dt_filtered" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AllProducts" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -129,7 +129,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" BrowserType="Edge" ContinueOnError="{x:Null}" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="578,2330" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" SearchScope="{x:Null}" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;" TimeoutMS="{x:Null}" UiBrowser="{x:Null}">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="578,2330" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -158,7 +158,7 @@
                         <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:ExtractData ContinueOnError="{x:Null}" DataTable="[dt_AllProducts]" DelayBetweenPagesMS="{x:Null}" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" NextLinkSelector="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="True">
+                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" DataTable="[dt_AllProducts]" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" SimulateClick="True">
                       <ui:ExtractData.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76515207-1446-4c08-b5e8-f8e663457871" InformativeScreenshot="492b0430a74ceca797ca6b48ec79f56f" Selector="&lt;webctrl id='tbodyid' tag='DIV' /&gt;" WaitForReady="COMPLETE">
                           <ui:Target.TimeoutMS>
@@ -184,7 +184,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw DisplayName="Throw SE - Possible Next Page" Exception="[new BusinessRuleException(&quot;Extracted &quot; &amp; dt_AllProducts.Rows.Count.ToString &amp; &quot; products (a full page). The category may continue on a next page, which is not extracted.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <Throw DisplayName="Throw SE - Possible Next Page" Exception="[new SystemException(&quot;Extracted &quot; &amp; dt_AllProducts.Rows.Count.ToString &amp; &quot; products (a full page). The category may continue on a next page, which is not extracted.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -200,27 +200,18 @@
             </If>
             <Assign DisplayName="Assign - Filter Products by brand and price" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
-                <OutArgument x:TypeArguments="sd:DataTable">[dt_filtered]</OutArgument>
+                <OutArgument x:TypeArguments="sd:DataRow">[dt_filtered]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If((From row In dt_AllProducts.AsEnumerable()
-    Let priceVal = CInt(row("Price").ToString.Replace("$", String.Empty).Trim)
-    Where row("Name").ToString.Trim.ToLower.Contains(in_brand.Trim.ToLower) AndAlso
-          priceVal &gt;= in_minPrice AndAlso
-          priceVal &lt;= in_maxPrice
-    Order By priceVal Descending
-    Select row).Any(),
-   (From row In dt_AllProducts.AsEnumerable()
-    Let priceVal = CInt(row("Price").ToString.Replace("$", String.Empty).Trim)
-    Where row("Name").ToString.Trim.ToLower.Contains(in_brand.Trim.ToLower) AndAlso
-          priceVal &gt;= in_minPrice AndAlso
-          priceVal &lt;= in_maxPrice
-    Order By priceVal Descending
-    Select row).CopyToDataTable(),
-   dt_AllProducts.Clone())]</InArgument>
+                <InArgument x:TypeArguments="sd:DataRow" xml:space="preserve">[dt_AllProducts.AsEnumerable().
+    Where(Function(r) r("Name").ToString.Trim.ToLower.Contains(in_brand.Trim.ToLower) AndAlso
+                      CInt(r("Price").ToString.Replace("$", String.Empty).Trim) &gt;= in_minPrice AndAlso
+                      CInt(r("Price").ToString.Replace("$", String.Empty).Trim) &lt;= in_maxPrice).
+    OrderByDescending(Function(r) CInt(r("Price").ToString.Replace("$", String.Empty).Trim)).
+    FirstOrDefault()]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[dt_filtered.Rows.Count &gt; 0]" DisplayName="If - Data table is not null" sap:VirtualizedContainerService.HintSize="510,784" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[dt_filtered IsNot Nothing]" DisplayName="If - Data table is not null" sap:VirtualizedContainerService.HintSize="510,784" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,396" sap2010:WorkflowViewState.IdRef="Sequence_20">
                   <sap:WorkflowViewStateService.ViewState>
@@ -233,7 +224,7 @@
                       <OutArgument x:TypeArguments="x:String">[out_targetItem]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[dt_filtered.Rows(0)("Name").ToString().Trim()]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[dt_filtered("Name").ToString().Trim()]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign DisplayName="Assign - Target Price" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_15">
@@ -241,7 +232,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[out_targetPrice]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt(dt_filtered.Rows(0)("Price").ToString().Replace("$", String.Empty).Trim())]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(dt_filtered("Price").ToString().Replace("$", String.Empty).Trim())]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign DisplayName="Assign - Target Urls" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_16">
@@ -249,7 +240,7 @@
                       <OutArgument x:TypeArguments="x:String">[out_targetUrl]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[If(dt_filtered.Rows(0)("Url").ToString.Trim.StartsWith("http"), dt_filtered.Rows(0)("Url").ToString.Trim, "https://www.demoblaze.com/" &amp; dt_filtered.Rows(0)("Url").ToString.Trim)]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[If(dt_filtered("Url").ToString.Trim.StartsWith("http"), dt_filtered("Url").ToString.Trim, "https://www.demoblaze.com/" &amp; dt_filtered("Url").ToString.Trim)]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
