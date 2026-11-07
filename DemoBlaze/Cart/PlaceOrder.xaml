@@ -95,9 +95,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PlaceOrder" sap:VirtualizedContainerService.HintSize="816,3414" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PlaceOrder" sap:VirtualizedContainerService.HintSize="808,3414" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isOrderModalOpen" />
       <Variable x:TypeArguments="x:Boolean" Name="isPurchaseConfirmed" />
@@ -287,7 +288,7 @@
                 <OutArgument x:TypeArguments="x:String">[out_screenshotPath]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "OrderConfirmation.png")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "OrderConfirmations", "OrderConfirmation.png")]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:SaveImage DisplayName="Save Image - Order Confirmatin" FileName="[out_screenshotPath]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[confirmationImage]" />
