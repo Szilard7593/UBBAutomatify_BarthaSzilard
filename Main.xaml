@@ -181,8 +181,8 @@
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_category">[CurrentRow("Category").ToString.Trim]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_brand">[CurrentRow("Brand").ToString.Trim]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="in_minPrice">[CInt(CurrentRow("minPrice").ToString.Trim)]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="in_maxPrice">[CInt(CurrentRow("maxPrice").ToString.Trim)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="in_minPrice">[CInt(CurrentRow("Min price per unit").ToString.Trim)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="in_maxPrice">[CInt(CurrentRow("Max price per unit").ToString.Trim)]</InArgument>
                       <InArgument x:TypeArguments="x:Int32" x:Key="in_quantitty">[CInt(CurrentRow("Qty").ToString.Trim)]</InArgument>
                       <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_expectedCart">[dt_expectedCart]</InOutArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_orderSumary">[orderSumaryText]</InOutArgument>

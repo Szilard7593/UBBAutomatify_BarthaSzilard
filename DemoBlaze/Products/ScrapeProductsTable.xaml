@@ -119,7 +119,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2353" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="808,2353" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="dt_filtered" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AllProducts" />
@@ -141,7 +141,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Retry Scope - Extract Data" sap:VirtualizedContainerService.HintSize="510,629" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="7" RetryInterval="00:00:02">
+            <ui:RetryScope DisplayName="Retry Scope - Extract Data" sap:VirtualizedContainerService.HintSize="510,629" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="7" RetryInterval="00:00:02">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,305" sap2010:WorkflowViewState.IdRef="Sequence_25">
@@ -176,7 +176,7 @@
                 </ActivityFunc>
               </ui:RetryScope.Condition>
             </ui:RetryScope>
-            <If Condition="[dt_AllProducts.Rows.Count &gt;= 9]" DisplayName="If - Page May Have Next" sap:VirtualizedContainerService.HintSize="510,571" sap2010:WorkflowViewState.IdRef="If_6">
+            <If Condition="[dt_AllProducts.Rows.Count &gt;= 9]" DisplayName="If - Page May Have Next" sap:VirtualizedContainerService.HintSize="510,571" sap2010:WorkflowViewState.IdRef="If_7">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
