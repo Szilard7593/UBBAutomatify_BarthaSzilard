@@ -111,7 +111,7 @@
     <ui:LogMessage DisplayName="Log Message - ProcessOrderItem" sap:VirtualizedContainerService.HintSize="570,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting to process order items&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NavigateToHome - Invoke Workflow File (DemoBlaze\Navigation\NavigateToHome.xaml)" sap:VirtualizedContainerService.HintSize="570,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DemoBlaze\Navigation\NavigateToHome.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_category" />
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NagivateToCategory - Invoke Workflow File (DemoBlaze\Navigation\NagivateToCategory.xaml)" sap:VirtualizedContainerService.HintSize="570,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DemoBlaze\Navigation\NagivateToCategory.xaml">
@@ -166,7 +166,7 @@
               <InArgument x:TypeArguments="x:Int32">[io_totalOrderAmount + (foundPrice * in_quantitty)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While - Add expected rows to cart data table" sap:VirtualizedContainerService.HintSize="502,525" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+          <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[qtyCounter &lt; in_quantitty]" DisplayName="While - Add expected rows to cart data table" sap:VirtualizedContainerService.HintSize="502,525" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
             <ui:InterruptibleWhile.Body>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,387" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
@@ -185,9 +185,6 @@
                 </Assign>
               </Sequence>
             </ui:InterruptibleWhile.Body>
-            <ui:InterruptibleWhile.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="qtyCounter &lt; in_quantitty" />
-            </ui:InterruptibleWhile.Condition>
           </ui:InterruptibleWhile>
         </Sequence>
       </If.Then>
