@@ -90,11 +90,6 @@
   <Sequence DisplayName="ValidatePO" sap:VirtualizedContainerService.HintSize="808,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="missinCollums" />
-      <Variable x:TypeArguments="x:Boolean" Name="isRowValid" />
-      <Variable x:TypeArguments="x:Int32" Name="qty" />
-      <Variable x:TypeArguments="x:Int32" Name="minPrice" />
-      <Variable x:TypeArguments="x:Int32" Name="maxPrice" />
-      <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">

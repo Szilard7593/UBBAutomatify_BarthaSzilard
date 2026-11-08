@@ -93,21 +93,12 @@
   </sap:WorkflowViewStateService.ViewState>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="808,3990" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="foundItem" />
-      <Variable x:TypeArguments="x:Int32" Name="foundPrice" />
-      <Variable x:TypeArguments="x:String" Name="foundUrls" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_purchaseOrder" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_expectedCart" />
-      <Variable x:TypeArguments="x:String" Name="currentCategory" />
-      <Variable x:TypeArguments="x:String" Name="currentBrand" />
-      <Variable x:TypeArguments="x:Int32" Name="currentMinPrice" />
-      <Variable x:TypeArguments="x:Int32" Name="currentMaxPrice" />
       <Variable x:TypeArguments="x:String" Name="orderSumaryText" />
       <Variable x:TypeArguments="x:Int32" Name="totalOrderAmount" />
       <Variable x:TypeArguments="x:String" Name="emailBody" />
       <Variable x:TypeArguments="x:String" Name="screenShotPath" />
-      <Variable x:TypeArguments="x:Int32" Name="currentQty" />
-      <Variable x:TypeArguments="x:Int32" Name="qtyCounter" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_initialPO" />
       <Variable x:TypeArguments="x:String" Name="skippedRows" />
     </Sequence.Variables>

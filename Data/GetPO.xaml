@@ -91,14 +91,14 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetPurchaseOrder" sap:VirtualizedContainerService.HintSize="816,484" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetPurchaseOrder" sap:VirtualizedContainerService.HintSize="808,484" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Starting reading po" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting to read the purchase order&quot;]" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_initialPO]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\PO.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_initialPO]" DisplayName="Read Range Workbook - Purchase order" sap:VirtualizedContainerService.HintSize="416,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\PO.xlsx" />
     <ui:LogMessage DisplayName="Log Message - Finish reading po" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;The workbook was read succesfully&quot;]" />
   </Sequence>
 </Activity>

@@ -133,13 +133,10 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - First Delete Button" FoundElement="[deleteElement]" sap:VirtualizedContainerService.HintSize="382,119" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
                           <ui:WaitUiElementAppear.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="484e563c-6d0d-44be-9f3b-bc6ef3b9e05f" Selector="&lt;webctrl parentid='tbodyid' tag='A' aaname='Delete' /&gt;">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="484e563c-6d0d-44be-9f3b-bc6ef3b9e05f" Selector="&lt;webctrl parentid='tbodyid' tag='A' aaname='Delete' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
                             </ui:Target>
                           </ui:WaitUiElementAppear.Target>
                         </ui:WaitUiElementAppear>
@@ -171,7 +168,7 @@
                             </ui:Target>
                           </ui:WaitUiElementVanish.Target>
                         </ui:WaitUiElementVanish>
-                        <ui:UiElementExists DisplayName="Element Exists" Exists="[itemExists]" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                        <ui:UiElementExists DisplayName="Element Exists - Dete button" Exists="[itemExists]" sap:VirtualizedContainerService.HintSize="382,110" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                           <ui:UiElementExists.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f71787e9-cf4a-4be4-ab58-89a926b74e33" Selector="&lt;webctrl parentid='tbodyid' tag='A' aaname='Delete' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
