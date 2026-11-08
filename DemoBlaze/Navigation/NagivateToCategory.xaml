@@ -82,37 +82,49 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="816,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="808,1739" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - Demoblaze Store" sap:VirtualizedContainerService.HintSize="586,1478" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="ed506dab775e27a62618dd72d13e6a9f" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - Demoblaze Store" sap:VirtualizedContainerService.HintSize="586,1716" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="ed506dab775e27a62618dd72d13e6a9f" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,1308" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,1546" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not String.IsNullOrWhiteSpace(in_category) AndAlso {&quot;phones&quot;, &quot;laptops&quot;, &quot;monitors&quot;}.Contains(in_category.Trim.ToLower)]" DisplayName="If - Category is provided" sap:VirtualizedContainerService.HintSize="518,1248" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not String.IsNullOrWhiteSpace(in_category) AndAlso {&quot;phones&quot;, &quot;laptops&quot;, &quot;monitors&quot;}.Contains(in_category.Trim.ToLower)]" DisplayName="If - Category is provided" sap:VirtualizedContainerService.HintSize="518,1486" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,860" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,1098" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="areProductsLoaded" />
+                    <Variable x:TypeArguments="ui:UiElement" Name="fisrtProductBefore" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - First product before filter" FoundElement="[fisrtProductBefore]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="21904b56-e94c-4654-be7c-e90e44eee3bc" Selector="&lt;webctrl tag='A' class='hrefch' parentid='tbodyid' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
                   <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Category Filter" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
@@ -132,6 +144,11 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
+                  <ui:WaitUiElementVanish WaitNotActive="{x:Null}" WaitNotVisible="{x:Null}" DisplayName="Wait Element Vanish - Old product list" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="WaitUiElementVanish_1">
+                    <ui:WaitUiElementVanish.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[fisrtProductBefore]" Id="e8712565-e2ba-43de-ad2c-997c8b42ac33" TimeoutMS="15000" WaitForReady="COMPLETE" />
+                    </ui:WaitUiElementVanish.Target>
+                  </ui:WaitUiElementVanish>
                   <ui:UiElementExists DisplayName="Element Exists - Category products loaded" Exists="[areProductsLoaded]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ee90456b-3051-4b4a-9427-739fdff8a165" Selector="&lt;webctrl tag='A' class='hrefch' parentid='tbodyid' /&gt;" WaitForReady="COMPLETE">
