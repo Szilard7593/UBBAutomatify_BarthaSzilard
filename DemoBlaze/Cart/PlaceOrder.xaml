@@ -276,7 +276,7 @@
             </If>
             <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot - Confirmation Dialog" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[confirmationImage]">
               <ui:TakeScreenshot.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="225813da-fb2c-481b-94e8-e34058cf6dab" InformativeScreenshot="72407768d56a941cea3b01935634fc79" Selector="&lt;webctrl css-selector='body&amp;gt;div.sweet-alert' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="225813da-fb2c-481b-94e8-e34058cf6dab" InformativeScreenshot="72407768d56a941cea3b01935634fc79" Selector="&lt;webctrl tag='DIV' class='sweet-alert*showSweetAlert*' visibleinnertext='Thank you for your purchase!*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
