@@ -91,7 +91,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="808,3918" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="794,4095" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_purchaseOrder" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_expectedCart" />
@@ -108,9 +108,12 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start Process " sap:VirtualizedContainerService.HintSize="456,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Starting the process&quot;]" />
-    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="456,3554" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="456,3731" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:String" Name="reportPath" />
+      </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="418,2529" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="418,2706" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="config" />
           </Sequence.Variables>
@@ -131,9 +134,9 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ValidatePO - Invoke Workflow File (Data\ValidatePO.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Data\ValidatePO.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_purchaseOrder">[dt_initialPO]</InArgument>
               <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_validPO">[dt_purchaseOrder]</OutArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_skippedRows">[skippedRows]</OutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_purchaseOrder">[dt_initialPO]</InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BuildExpectedCart - Invoke Workflow File (Data\BuildExpectedCart.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Data\BuildExpectedCart.xaml">
@@ -191,6 +194,13 @@
               <OutArgument x:TypeArguments="x:String" x:Key="out_screenshotPath">[screenShotPath]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GenerateStatusReport - Invoke Workflow File (Data\GenerateStatusReport.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Data\GenerateStatusReport.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_initialPO">[dt_initialPO]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_processedPO">[dt_purchaseOrder]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_reportPath">[reportPath]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BuildEmailBody - Invoke Workflow File (Email\BuildEmailBody.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Email\BuildEmailBody.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_orderSummary">[orderSumaryText]</InArgument>
@@ -207,6 +217,7 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[emailBody]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_smptServer">[config("in_smptServer")]</InArgument>
               <InArgument x:TypeArguments="x:Int32" x:Key="in_smptPort">[CInt(config("in_smptPort"))]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_reportPath">[reportPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
