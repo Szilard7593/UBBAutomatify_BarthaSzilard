@@ -85,14 +85,14 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="BuildEmailBody" sap:VirtualizedContainerService.HintSize="808,305" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="BuildEmailBody" sap:VirtualizedContainerService.HintSize="808,480" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Bulding the email body" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Was added to the email body a products info&quot;]" />
-    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message - Bulding the email body" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting to add added to the email body a products info&quot;]" />
+    <Assign DisplayName="Assign - Email Body" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_emailBody]</OutArgument>
       </Assign.To>
@@ -107,5 +107,6 @@ If(String.IsNullOrWhiteSpace(in_skippedRows), "", "Skipped / Invalid PO Rows:" &
 "RPA Robot"]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:LogMessage DisplayName="Log Message - Added to email body" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;A new line was added to the email body&quot;]" />
   </Sequence>
 </Activity>

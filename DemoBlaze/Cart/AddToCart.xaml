@@ -98,9 +98,9 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="816,1660" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AddToCart" sap:VirtualizedContainerService.HintSize="808,1660" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Default="0" Name="currentCount" />
+      <Variable x:TypeArguments="x:Int32" Name="currentCount" />
       <Variable x:TypeArguments="x:Boolean" Name="popUpLoaded" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>

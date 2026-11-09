@@ -86,12 +86,13 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="808,1739" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="808,1914" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message -Starting to navigate to a category" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Staring to navigate to a category&quot;]" />
     <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - Demoblaze Store" sap:VirtualizedContainerService.HintSize="586,1716" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="ed506dab775e27a62618dd72d13e6a9f" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
