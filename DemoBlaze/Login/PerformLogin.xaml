@@ -111,7 +111,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="retrievedUsername" />
       <Variable x:TypeArguments="x:String" Name="loggedInUsername" />
-      <Variable x:TypeArguments="x:Boolean" Default="False" Name="isUserLoggedIn" />
+      <Variable x:TypeArguments="x:Boolean" Name="isUserLoggedIn" />
       <Variable x:TypeArguments="x:Boolean" Name="isLogginErrorPopUp" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>

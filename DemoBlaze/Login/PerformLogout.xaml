@@ -80,7 +80,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PerformLogout" sap:VirtualizedContainerService.HintSize="816,1248" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PerformLogout" sap:VirtualizedContainerService.HintSize="808,1248" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,7 +114,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="306c54a8-a9cd-4d24-b3dc-d6432f8f8c26" InformativeScreenshot="c92e16a4d5987104aff9db76f97cec05" Selector="&lt;webctrl id='logout2' tag='A' /&gt;" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="306c54a8-a9cd-4d24-b3dc-d6432f8f8c26" InformativeScreenshot="7b146d74a3ee90885b744696f4790f3a" Selector="&lt;webctrl id='logout2' tag='A' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>

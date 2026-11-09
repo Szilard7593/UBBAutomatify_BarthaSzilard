@@ -95,9 +95,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PlaceOrder" sap:VirtualizedContainerService.HintSize="816,3414" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PlaceOrder" sap:VirtualizedContainerService.HintSize="808,3414" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isOrderModalOpen" />
       <Variable x:TypeArguments="x:Boolean" Name="isPurchaseConfirmed" />
@@ -139,9 +140,9 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:UiElementExists DisplayName="Element Exists - Order Modal Name field" Exists="[isOrderModalOpen]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Element Exists - Order Modal " Exists="[isOrderModalOpen]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02d881b3-1c29-42e2-b0d8-029001196f33" Selector="&lt;webctrl id='name' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02d881b3-1c29-42e2-b0d8-029001196f33" Selector="&lt;webctrl id='orderModal' tag='DIV' class='*show*' style='*display: block*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -275,7 +276,7 @@
             </If>
             <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot - Confirmation Dialog" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[confirmationImage]">
               <ui:TakeScreenshot.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="225813da-fb2c-481b-94e8-e34058cf6dab" InformativeScreenshot="72407768d56a941cea3b01935634fc79" Selector="&lt;webctrl css-selector='body&amp;gt;div.sweet-alert' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="225813da-fb2c-481b-94e8-e34058cf6dab" InformativeScreenshot="72407768d56a941cea3b01935634fc79" Selector="&lt;webctrl tag='DIV' class='sweet-alert*showSweetAlert*' visibleinnertext='Thank you for your purchase!*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -287,7 +288,7 @@
                 <OutArgument x:TypeArguments="x:String">[out_screenshotPath]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "OrderConfirmation.png")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "OrderConfirmations", "OrderConfirmation.png")]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:SaveImage DisplayName="Save Image - Order Confirmatin" FileName="[out_screenshotPath]" sap:VirtualizedContainerService.HintSize="450,167" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[confirmationImage]" />

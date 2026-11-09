@@ -119,7 +119,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="816,2353" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeProductsTable" sap:VirtualizedContainerService.HintSize="808,2553" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="dt_filtered" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AllProducts" />
@@ -129,54 +129,62 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="578,2330" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - DemoBlaze" sap:VirtualizedContainerService.HintSize="570,2530" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="849966b0d9272589c68c6156c2a7ff42" Selector="&lt;html app='msedge.exe' title='STORE' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,2160" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,2360" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="areProductListed" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Retry Scope - Extract Data" sap:VirtualizedContainerService.HintSize="510,629" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="7" RetryInterval="00:00:02">
-              <ui:RetryScope.ActivityBody>
-                <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,305" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign - Reset data table" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_18">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[dt_AllProducts]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" DataTable="[dt_AllProducts]" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" SimulateClick="True">
-                      <ui:ExtractData.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76515207-1446-4c08-b5e8-f8e663457871" InformativeScreenshot="492b0430a74ceca797ca6b48ec79f56f" Selector="&lt;webctrl id='tbodyid' tag='DIV' /&gt;" WaitForReady="COMPLETE">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                        </ui:Target>
-                      </ui:ExtractData.Target>
-                    </ui:ExtractData>
-                  </Sequence>
-                </ActivityAction>
-              </ui:RetryScope.ActivityBody>
-              <ui:RetryScope.Condition>
-                <ActivityFunc x:TypeArguments="x:Boolean">
-                  <ui:CheckTrue DisplayName="Check True - Product List is settled" ErrorMessage="[&quot;Product list not settled: &quot; &amp; If(dt_AllProducts Is Nothing, &quot;no table&quot;, dt_AllProducts.Rows.Count.ToString &amp; &quot; rows&quot;)]" Expression="[dt_AllProducts IsNot Nothing AndAlso dt_AllProducts.Rows.Count &gt; 0 AndAlso dt_AllProducts.Rows.Count &lt; 9]" sap:VirtualizedContainerService.HintSize="468,131" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
-                </ActivityFunc>
-              </ui:RetryScope.Condition>
-            </ui:RetryScope>
-            <If Condition="[dt_AllProducts.Rows.Count &gt;= 9]" DisplayName="If - Page May Have Next" sap:VirtualizedContainerService.HintSize="510,571" sap2010:WorkflowViewState.IdRef="If_6">
+            <ui:UiElementExists DisplayName="Element Exists - Product list loaded" Exists="[areProductListed]" sap:VirtualizedContainerService.HintSize="502,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="71554b43-8f88-478f-8d45-e93842c0543f" Selector="&lt;webctrl tag='A' class='hrefch' parentid='tbodyid' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[Not areProductListed]" DisplayName="If - Product List Not Loaded" sap:VirtualizedContainerService.HintSize="502,571" sap2010:WorkflowViewState.IdRef="If_8">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw SE - Products not loaded" Exception="[new SystemException(&quot;Product not loaded&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Category Products loaded" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[&quot;The category products were loaded&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" DataTable="[dt_AllProducts]" DisplayName="Extract Structured Data - products url, name and price" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='fulltext' name2='Url' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Price' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="502,139" sap2010:WorkflowViewState.IdRef="ExtractData_3" MaxNumberOfResults="1000" SimulateClick="True">
+              <ui:ExtractData.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76515207-1446-4c08-b5e8-f8e663457871" InformativeScreenshot="492b0430a74ceca797ca6b48ec79f56f" Selector="&lt;webctrl id='tbodyid' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:ExtractData.Target>
+            </ui:ExtractData>
+            <If Condition="[dt_AllProducts.Rows.Count &gt;= 9]" DisplayName="If - Page May Have Next" sap:VirtualizedContainerService.HintSize="502,571" sap2010:WorkflowViewState.IdRef="If_7">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
@@ -198,7 +206,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <Assign DisplayName="Assign - Filter Products by brand and price" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign DisplayName="Assign - Filter Products by brand and price" sap:VirtualizedContainerService.HintSize="502,116" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataRow">[dt_filtered]</OutArgument>
               </Assign.To>
@@ -211,7 +219,7 @@
     FirstOrDefault()]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[dt_filtered IsNot Nothing]" DisplayName="If - Data table is not null" sap:VirtualizedContainerService.HintSize="510,784" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[dt_filtered IsNot Nothing]" DisplayName="If - Data table is not null" sap:VirtualizedContainerService.HintSize="502,784" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,396" sap2010:WorkflowViewState.IdRef="Sequence_20">
                   <sap:WorkflowViewStateService.ViewState>
