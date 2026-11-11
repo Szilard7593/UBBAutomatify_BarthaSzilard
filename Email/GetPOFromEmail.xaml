@@ -97,6 +97,12 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="GetPoFromInput" sap:VirtualizedContainerService.HintSize="794,1271" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -113,8 +119,8 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start GetPOFromMail" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Searching inbox for Purchase Order email with subject containing: &quot; &amp; in_poEmailSubject]" />
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SmtpCredential" CacheStrategy="None" DisplayName="Get Credential - Imap Credential" FolderPath="szilardbartha27@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="450,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[imapPassword]" Username="[imapUsername]" />
-    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - Inbox" Email="[imapUsername]" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;&quot; &amp; in_poEmailSubject &amp; &quot;&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[mailMessage]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="[in_imapPort]" SecureConnection="Auto" SecurePassword="[imapPassword]" Server="[in_imapServer]" Top="10" />
-    <If Condition="[mailMessage Is Nothing OrElse Not mailMessage.Any(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(&quot;.xlsx&quot;)))]" DisplayName="If - Check if PO Email with Excel Attachment Exists" sap:VirtualizedContainerService.HintSize="450,435" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - Inbox" Email="[imapUsername]" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;&quot; &amp; in_poEmailSubject &amp; &quot;&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[mailMessage]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="[in_imapPort]" SecureConnection="Auto" SecurePassword="[imapPassword]" Server="[in_imapServer]" Top="10" />
+    <If Condition="[mailMessage Is Nothing OrElse Not mailMessage.Any(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso Not m.Subject.ToLower.Contains(&quot;confirmation&quot;) AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(&quot;.xlsx&quot;) AndAlso a.Name.ToLower.Contains(&quot;po&quot;) AndAlso Not a.Name.ToLower.Contains(&quot;statusreport&quot;)))]" DisplayName="If - Check if PO Email with Excel Attachment Exists" sap:VirtualizedContainerService.HintSize="450,435" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -135,7 +141,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:SaveMailAttachments Attachments="[savedAtachment]" DisplayName="Save Attachments - Purchase Order" Filter=".*\.xlsx" FolderPath="Data\InputEmail" sap:VirtualizedContainerService.HintSize="450,124" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mailMessage.First(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(&quot;.xlsx&quot;)))]" OverwriteExisting="True" />
+    <ui:SaveMailAttachments Attachments="[savedAtachment]" DisplayName="Save Attachments - Purchase Order" Filter=".*[pP][oO].*\.xlsx" FolderPath="Data\InputEmail" sap:VirtualizedContainerService.HintSize="450,124" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mailMessage.First(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso Not m.Subject.ToLower.Contains(&quot;confirmation&quot;) AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(&quot;.xlsx&quot;) AndAlso a.Name.ToLower.Contains(&quot;po&quot;) AndAlso Not a.Name.ToLower.Contains(&quot;statusreport&quot;)))]" OverwriteExisting="True" />
     <Assign DisplayName="Assign - Set output PO file path" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_poFilePath]</OutArgument>
