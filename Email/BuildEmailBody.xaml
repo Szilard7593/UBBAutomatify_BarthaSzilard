@@ -2,7 +2,6 @@
   <x:Members>
     <x:Property Name="in_orderSummary" Type="InArgument(x:String)" />
     <x:Property Name="in_totalOrderAmount" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_skippedRows" Type="InArgument(x:String)" />
     <x:Property Name="out_emailBody" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
@@ -85,7 +84,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="BuildEmailBody" sap:VirtualizedContainerService.HintSize="808,480" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="BuildEmailBody" sap:VirtualizedContainerService.HintSize="794,480" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -102,7 +101,6 @@
 "Order Summary:" &amp; Environment.NewLine &amp;
 If(String.IsNullOrWhiteSpace(in_orderSummary), "No products were ordered." &amp; Environment.NewLine, in_orderSummary) &amp; Environment.NewLine &amp;
 "Total Order Amount: $" &amp; in_totalOrderAmount.ToString &amp; Environment.NewLine &amp; Environment.NewLine &amp;
-If(String.IsNullOrWhiteSpace(in_skippedRows), "", "Skipped / Invalid PO Rows:" &amp; Environment.NewLine &amp; in_skippedRows &amp; Environment.NewLine &amp; Environment.NewLine) &amp;
 "Best regards," &amp; Environment.NewLine &amp;
 "RPA Robot"]</InArgument>
       </Assign.Value>

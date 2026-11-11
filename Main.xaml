@@ -100,7 +100,6 @@
       <Variable x:TypeArguments="x:String" Name="emailBody" />
       <Variable x:TypeArguments="x:String" Name="screenShotPath" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_initialPO" />
-      <Variable x:TypeArguments="x:String" Name="skippedRows" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -145,7 +144,6 @@
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ValidatePO - Invoke Workflow File (Data\ValidatePO.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Data\ValidatePO.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_validPO">[dt_purchaseOrder]</OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_skippedRows">[skippedRows]</OutArgument>
               <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_purchaseOrder">[dt_initialPO]</InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
@@ -215,7 +213,6 @@
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_orderSummary">[orderSumaryText]</InArgument>
               <InArgument x:TypeArguments="x:Int32" x:Key="in_totalOrderAmount">[totalOrderAmount]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_skippedRows">[skippedRows]</InArgument>
               <OutArgument x:TypeArguments="x:String" x:Key="out_emailBody">[emailBody]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
@@ -257,7 +254,7 @@
         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,297" sap2010:WorkflowViewState.IdRef="Catch`1_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

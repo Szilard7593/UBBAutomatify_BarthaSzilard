@@ -1,7 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ValidatePO" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_dt_validPO" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="out_skippedRows" Type="OutArgument(x:String)" />
     <x:Property Name="io_dt_purchaseOrder" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
@@ -89,7 +88,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidatePO" sap:VirtualizedContainerService.HintSize="794,2372" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidatePO" sap:VirtualizedContainerService.HintSize="794,2257" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="missinCollums" />
     </Sequence.Variables>
@@ -182,14 +181,6 @@
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="sd:DataTable">[io_dt_purchaseOrder.AsEnumerable().Where(Function(row) Not String.IsNullOrWhiteSpace(row("Category").ToString.Trim) AndAlso {"phones", "laptops", "monitors"}.Contains(row("Category").ToString.Trim.ToLower) AndAlso Not String.IsNullOrWhiteSpace(row("Brand").ToString.Trim) AndAlso Not {"phone", "phones", "laptop", "laptops", "monitor", "monitors"}.Contains(row("Brand").ToString.Trim.ToLower) AndAlso IsNumeric(row("Qty").ToString.Trim) AndAlso CInt(row("Qty").ToString.Trim) &gt; 0 AndAlso IsNumeric(row("Min price per unit").ToString.Trim) AndAlso IsNumeric(row("Max price per unit").ToString.Trim) AndAlso CInt(row("Min price per unit").ToString.Trim) &gt; 0 AndAlso CInt(row("Max price per unit").ToString.Trim) &gt; 0 AndAlso CInt(row("Min price per unit").ToString.Trim) &lt; CInt(row("Max price per unit").ToString.Trim)).CopyToDataTable()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign - invalidRows(skippedRows)" sap:VirtualizedContainerService.HintSize="547,115" sap2010:WorkflowViewState.IdRef="Assign_6">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[out_skippedRows]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine, io_dt_purchaseOrder.AsEnumerable().Where(Function(r) r("status").ToString = "Failed").Select(Function(r) "- Categorie: " &amp; r("Category").ToString &amp; " | Brand: " &amp; r("Brand").ToString &amp; " | Qty: " &amp; r("Qty").ToString &amp; " ---&gt; " &amp; r("status_details").ToString))]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[out_dt_validPO.Rows.Count  = 0]" DisplayName="If - No Valid Rows" sap:VirtualizedContainerService.HintSize="547,562" sap2010:WorkflowViewState.IdRef="If_3">
