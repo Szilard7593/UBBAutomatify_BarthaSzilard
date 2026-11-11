@@ -91,7 +91,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="794,4095" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="794,4272" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_purchaseOrder" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_expectedCart" />
@@ -108,14 +108,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start Process " sap:VirtualizedContainerService.HintSize="456,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Starting the process&quot;]" />
-    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="456,3731" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+    <TryCatch DisplayName="Try Catch - On Main Process" sap:VirtualizedContainerService.HintSize="456,3908" sap2010:WorkflowViewState.IdRef="TryCatch_5">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="reportPath" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="418,2706" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence - Main Process" sap:VirtualizedContainerService.HintSize="418,2883" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="config" />
+            <Variable x:TypeArguments="x:String" Name="poFilePath" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,9 +128,18 @@
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_config">[config]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetPOFromEmail - Invoke Workflow File (Email\GetPOFromEmail.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Email\GetPOFromEmail.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_imapServer">[config("in_imapServer")]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_imapPort">[Cint(config("in_imapPort"))]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_poEmailSubject">[config("in_poEmailSubject")]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_poFilePath">[poFilePath]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetPO - Invoke Workflow File (Data\GetPO.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Data\GetPO.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_initialPO">[dt_initialPO]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_poFilePath">[poFilePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ValidatePO - Invoke Workflow File (Data\ValidatePO.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Data\ValidatePO.xaml">
