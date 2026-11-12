@@ -101,7 +101,7 @@
         <OutArgument x:TypeArguments="x:String">[out_personName]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_config.Keys.Where(Function(k) k.StartsWith("Account_") AndAlso in_emailBodyText.ToLower.Contains(k.Substring(8).Trim.ToLower)).Select(Function(k) k.Substring(8).Trim).FirstOrDefault()]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_config.Keys.Where(Function(k) k.StartsWith("Account_") AndAlso in_emailBodyText.ToLower.Replace(" ", String.Empty).Contains(k.Substring(8).Trim.ToLower.Replace(" ", String.Empty))).Select(Function(k) k.Substring(8).Trim).FirstOrDefault()]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[String.IsNullOrWhiteSpace(out_personName)]" DisplayName="If - Check If Valid Person Was Found" sap:VirtualizedContainerService.HintSize="502,677" sap2010:WorkflowViewState.IdRef="If_1">

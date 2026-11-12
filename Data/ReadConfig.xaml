@@ -106,11 +106,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Reads Data\Config.xlsx (sheet Settings, columns Name/Value) into a Dictionary(Of String, String). Fails with a BusinessRuleException if a required key is missing. Never logs values (they may be sensitive)." DisplayName="ReadConfig" sap:VirtualizedContainerService.HintSize="794,1339" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Reads Data\Config.xlsx (sheet Settings, columns Name/Value) into a Dictionary(Of String, String). Fails with a BusinessRuleException if a required key is missing. Never logs values (they may be sensitive)." DisplayName="ReadConfig" sap:VirtualizedContainerService.HintSize="794,1459" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_config" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="dictionaryConfig" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="missingKeys" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_accounts" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -119,12 +120,13 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start Reading Config" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Reading config file: &quot;]" />
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_config]" DisplayName="Read Range Workbook - Read Config" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Settings" WorkbookPath="Data\Config.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_accounts]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Accounts" WorkbookPath="Data\Config.xlsx" />
     <Assign DisplayName="Assign - Config Dictionary" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictionaryConfig]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dt_config.AsEnumerable().Where(Function(r) Not String.IsNullOrWhiteSpace(r("Name").ToString)).ToDictionary(Function(r) r("Name").ToString.Trim, Function(r) r("Value").ToString.Trim)]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dt_config.AsEnumerable().Concat(dt_accounts.AsEnumerable()).Where(Function(r) Not String.IsNullOrWhiteSpace(r("Name").ToString)).ToDictionary(Function(r) r("Name").ToString.Trim, Function(r) r("Value").ToString.Trim)]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Assign - Missing Config Keys" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_2">
