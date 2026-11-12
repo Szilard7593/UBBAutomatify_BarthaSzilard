@@ -4,6 +4,7 @@
     <x:Property Name="in_imapPort" Type="InArgument(x:Int32)" />
     <x:Property Name="in_poEmailSubject" Type="InArgument(x:String)" />
     <x:Property Name="out_poFilePath" Type="OutArgument(x:String)" />
+    <x:Property Name="out_emailBodyText" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -43,6 +44,8 @@
       <x:String>UiPath.Mail.IMAP.Activities</x:String>
       <x:String>UiPath.Mail.Activities</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Collections.Specialized</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -103,14 +106,17 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetPoFromInput" sap:VirtualizedContainerService.HintSize="794,1271" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetPoFromInput" sap:VirtualizedContainerService.HintSize="794,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="imapUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="imapPassword" />
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="savedAtachment" />
+      <Variable x:TypeArguments="snm:MailMessage" Name="targetMail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -141,13 +147,29 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:SaveMailAttachments Attachments="[savedAtachment]" DisplayName="Save Attachments - Purchase Order" Filter=".*[pP][oO].*\.xlsx" FolderPath="Data\InputEmail" sap:VirtualizedContainerService.HintSize="450,124" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mailMessage.First(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso Not m.Subject.ToLower.Contains(&quot;confirmation&quot;) AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(&quot;.xlsx&quot;) AndAlso a.Name.ToLower.Contains(&quot;po&quot;) AndAlso Not a.Name.ToLower.Contains(&quot;statusreport&quot;)))]" OverwriteExisting="True" />
+    <Assign DisplayName="Assign - Get Target Mail" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="snm:MailMessage">[targetMail]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="snm:MailMessage">[mailMessage.First(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso Not m.Subject.ToLower.Contains("confirmation") AndAlso Not m.Subject.ToLower.StartsWith("re:") AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(".xlsx") AndAlso (a.Name.ToLower.Contains("po") OrElse a.Name.ToLower.Contains("purchase")) AndAlso Not a.Name.ToLower.Contains("statusreport")))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:SaveMailAttachments Attachments="[savedAtachment]" DisplayName="Save Attachments - Purchase Order" Filter=".*[pP][oO].*\.xlsx" FolderPath="Data\InputEmail" sap:VirtualizedContainerService.HintSize="450,124" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[targetMail]" OverwriteExisting="True" />
     <Assign DisplayName="Assign - Set output PO file path" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_poFilePath]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">[savedAtachment.First()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - Extract Email Body Text" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_emailBodyText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(If(Not String.IsNullOrWhiteSpace(targetMail.Body), targetMail.Body, targetMail.Headers("PlainText")), "&lt;.*?&gt;", " ").Trim]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message - End GetPOFromEmail" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Purchase Order attachment downloaded successfully at: &quot; &amp; out_poFilePath]" />
