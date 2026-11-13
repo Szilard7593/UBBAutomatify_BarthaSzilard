@@ -99,7 +99,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GenerateStatusReport" sap:VirtualizedContainerService.HintSize="794,742" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GenerateStatusReport" sap:VirtualizedContainerService.HintSize="794,1102" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_finalReport" />
     </Sequence.Variables>
@@ -108,8 +108,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - generating excell report" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Generating excell report status..&quot;]" />
-    <Assign DisplayName="Assign - Excell Report Path" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message - generating excell report" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Generating excell report status..&quot;]" />
+    <Assign DisplayName="Assign - Excell Report Path" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_reportPath]</OutArgument>
       </Assign.To>
@@ -117,7 +117,7 @@
         <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "Data", "PO_StatusReport.xlsx")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - final dt for report" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - final dt for report" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[dt_finalReport]</OutArgument>
       </Assign.To>
@@ -125,7 +125,29 @@
         <InArgument x:TypeArguments="sd:DataTable">[in_dt_processedPO.AsEnumerable().Concat(in_dt_initialPO.AsEnumerable().Where(Function(r) r("status").ToString = "Failed")).CopyToDataTable()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dt_finalReport]" DisplayName="Write Range Workbook - Status excell" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[out_reportPath]" />
-    <ui:LogMessage DisplayName="Log Message - Status report saved" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Status report saved&quot;]" />
+    <If Condition="[File.Exists(out_reportPath)]" DisplayName="If - Out Report Path File exists" sap:VirtualizedContainerService.HintSize="450,360" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,164" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteFileX DisplayName="Delete File - Old Status Report" sap:VirtualizedContainerService.HintSize="382,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[out_reportPath]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dt_finalReport]" DisplayName="Write Range Workbook - Status excell" sap:VirtualizedContainerService.HintSize="450,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[out_reportPath]" />
+    <ui:LogMessage DisplayName="Log Message - Status report saved" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Status report saved&quot;]" />
   </Sequence>
 </Activity>
