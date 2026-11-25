@@ -86,7 +86,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="808,1914" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SelectCategory" sap:VirtualizedContainerService.HintSize="794,1914" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -147,7 +147,11 @@
                   </ui:Click>
                   <ui:WaitUiElementVanish WaitNotActive="{x:Null}" WaitNotVisible="{x:Null}" DisplayName="Wait Element Vanish - Old product list" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="WaitUiElementVanish_1">
                     <ui:WaitUiElementVanish.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[fisrtProductBefore]" Id="e8712565-e2ba-43de-ad2c-997c8b42ac33" TimeoutMS="15000" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[fisrtProductBefore]" Id="e8712565-e2ba-43de-ad2c-997c8b42ac33" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
                     </ui:WaitUiElementVanish.Target>
                   </ui:WaitUiElementVanish>
                   <ui:UiElementExists DisplayName="Element Exists - Category products loaded" Exists="[areProductsLoaded]" sap:VirtualizedContainerService.HintSize="450,119" sap2010:WorkflowViewState.IdRef="UiElementExists_1">

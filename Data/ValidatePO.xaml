@@ -1,8 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ValidatePO" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_dt_purchaseOrder" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_dt_validPO" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="out_skippedRows" Type="OutArgument(x:String)" />
+    <x:Property Name="io_dt_purchaseOrder" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -29,6 +28,7 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.Reflection</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -85,9 +85,10 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidatePO" sap:VirtualizedContainerService.HintSize="808,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidatePO" sap:VirtualizedContainerService.HintSize="794,2257" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="missinCollums" />
     </Sequence.Variables>
@@ -96,15 +97,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Missing Columns" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - Missing Columns" sap:VirtualizedContainerService.HintSize="547,115" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[missinCollums]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="scg:List(x:String)">[{"Category","Brand","Qty","Min price per unit","Max price per unit"}.Where(Function(c) Not in_dt_purchaseOrder.Columns.Contains(c)).ToList]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)">[{"Category","Brand","Qty","Min price per unit","Max price per unit"}.Where(Function(c) Not io_dt_purchaseOrder.Columns.Contains(c)).ToList]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[missinCollums.Any]" DisplayName="If - Incomplete purchase Order" sap:VirtualizedContainerService.HintSize="450,571" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[missinCollums.Any]" DisplayName="If - Incomplete purchase Order" sap:VirtualizedContainerService.HintSize="547,571" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -126,23 +127,63 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Assign - Valid Purchase Order" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="status" DataTable="[io_dt_purchaseOrder]" DisplayName="Add Data Column - Status" sap:VirtualizedContainerService.HintSize="547,221" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="status_details" DataTable="[io_dt_purchaseOrder]" DisplayName="Add Data Column - Status Details" sap:VirtualizedContainerService.HintSize="547,221" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_purchaseOrder]" DisplayName="For Each Row in Data Table - Setting status for each row" sap:VirtualizedContainerService.HintSize="547,429" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="513,231" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign DisplayName="Multiple Assign - Status and Status Details" sap:VirtualizedContainerService.HintSize="479,171" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("status")]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Object">[If(Not String.IsNullOrWhiteSpace(CurrentRow("Category").ToString.Trim) AndAlso {"phones", "laptops", "monitors"}.Contains(CurrentRow("Category").ToString.Trim.ToLower) AndAlso Not String.IsNullOrWhiteSpace(CurrentRow("Brand").ToString.Trim) AndAlso Not {"phone", "phones", "laptop", "laptops", "monitor", "monitors"}.Contains(CurrentRow("Brand").ToString.Trim.ToLower) AndAlso IsNumeric(CurrentRow("Qty").ToString.Trim) AndAlso CInt(CurrentRow("Qty").ToString.Trim) &gt; 0 AndAlso IsNumeric(CurrentRow("Min price per unit").ToString.Trim) AndAlso IsNumeric(CurrentRow("Max price per unit").ToString.Trim) AndAlso CInt(CurrentRow("Min price per unit").ToString.Trim) &gt; 0 AndAlso CInt(CurrentRow("Max price per unit").ToString.Trim) &gt; 0 AndAlso CInt(CurrentRow("Min price per unit").ToString.Trim) &lt; CInt(CurrentRow("Max price per unit").ToString.Trim), "Pending", "Failed")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("status_details")]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Object" xml:space="preserve">[If(CurrentRow("status").ToString = "Pending", "Valid row, waiting to be processed.",
+  "Invalid PO row: " &amp;
+  If(String.IsNullOrWhiteSpace(CurrentRow("Category").ToString.Trim) OrElse Not {"phones", "laptops", "monitors"}.Contains(CurrentRow("Category").ToString.Trim.ToLower), "[Category missing or unknown] ", "") &amp;
+  If(String.IsNullOrWhiteSpace(CurrentRow("Brand").ToString.Trim), "[Brand missing] ", "") &amp;
+  If({"phone", "phones", "laptop", "laptops", "monitor", "monitors"}.Contains(CurrentRow("Brand").ToString.Trim.ToLower), "[Brand cannot be a category name] ", "") &amp;
+  If(Not IsNumeric(CurrentRow("Qty").ToString.Trim) OrElse CInt(CurrentRow("Qty").ToString.Trim) &lt;= 0, "[Quantity invalid or zero] ", "") &amp;
+  If(Not IsNumeric(CurrentRow("Min price per unit").ToString.Trim) OrElse Not IsNumeric(CurrentRow("Max price per unit").ToString.Trim), "[Price is not a number] ",
+     If(CInt(CurrentRow("Min price per unit").ToString.Trim) &lt;= 0 OrElse CInt(CurrentRow("Max price per unit").ToString.Trim) &lt;= 0, "[Price must be greater than 0] ",
+        If(CInt(CurrentRow("Min price per unit").ToString.Trim) &gt;= CInt(CurrentRow("Max price per unit").ToString.Trim), "[Min price must be smaller than max price] ", ""))))]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <Assign DisplayName="Assign - Valid Purchase Order" sap:VirtualizedContainerService.HintSize="547,115" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dt_validPO]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataTable">[in_dt_purchaseOrder.AsEnumerable().Where(Function(row) Not String.IsNullOrWhiteSpace(row("Category").ToString.Trim) AndAlso {"phones", "laptops", "monitors"}.Contains(row("Category").ToString.Trim.ToLower) AndAlso Not String.IsNullOrWhiteSpace(row("Brand").ToString.Trim) AndAlso IsNumeric(row("Qty").ToString.Trim) AndAlso CInt(row("Qty").ToString.Trim) &gt; 0 AndAlso IsNumeric(row("Min price per unit").ToString.Trim) AndAlso IsNumeric(row("Max price per unit").ToString.Trim)).CopyToDataTable()]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable">[io_dt_purchaseOrder.AsEnumerable().Where(Function(row) Not String.IsNullOrWhiteSpace(row("Category").ToString.Trim) AndAlso {"phones", "laptops", "monitors"}.Contains(row("Category").ToString.Trim.ToLower) AndAlso Not String.IsNullOrWhiteSpace(row("Brand").ToString.Trim) AndAlso Not {"phone", "phones", "laptop", "laptops", "monitor", "monitors"}.Contains(row("Brand").ToString.Trim.ToLower) AndAlso IsNumeric(row("Qty").ToString.Trim) AndAlso CInt(row("Qty").ToString.Trim) &gt; 0 AndAlso IsNumeric(row("Min price per unit").ToString.Trim) AndAlso IsNumeric(row("Max price per unit").ToString.Trim) AndAlso CInt(row("Min price per unit").ToString.Trim) &gt; 0 AndAlso CInt(row("Max price per unit").ToString.Trim) &gt; 0 AndAlso CInt(row("Min price per unit").ToString.Trim) &lt; CInt(row("Max price per unit").ToString.Trim)).CopyToDataTable()]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - invalidRows(skippedRows)" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_6">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[out_skippedRows]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[String.Join(Environment.NewLine, in_dt_purchaseOrder.AsEnumerable().Where(Function(r) String.IsNullOrWhiteSpace(r("Category").ToString.Trim) OrElse Not {"phones", "laptops", "monitors"}.Contains(r("Category").ToString.Trim.ToLower) OrElse String.IsNullOrWhiteSpace(r("Brand").ToString.Trim) OrElse Not IsNumeric(r("Qty").ToString.Trim) OrElse CInt(r("Qty").ToString.Trim) &lt;= 0 OrElse Not IsNumeric(r("Min price per unit").ToString.Trim) OrElse Not IsNumeric(r("Max price per unit").ToString.Trim)).Select(Function(r) "- Categorie: " &amp; r("Category").ToString &amp; " | Brand: " &amp; r("Brand").ToString &amp; " | Qty: " &amp; r("Qty").ToString &amp; " ---&gt; MOTIV: " &amp; If(String.IsNullOrWhiteSpace(r("Category").ToString.Trim) OrElse Not {"phones", "laptops", "monitors"}.Contains(r("Category").ToString.Trim.ToLower), "[Categorie necunoscută/lipsă] ", "") &amp; If(String.IsNullOrWhiteSpace(r("Brand").ToString.Trim), "[Brand lipsă] ", "") &amp; If(Not IsNumeric(r("Qty").ToString.Trim) OrElse CInt(r("Qty").ToString.Trim) &lt;= 0, "[Cantitate invalidă/zero] ", "") &amp; If(Not IsNumeric(r("Min price per unit").ToString.Trim) OrElse Not IsNumeric(r("Max price per unit").ToString.Trim), "[Preț invalid/text]", "")))]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <If Condition="[out_dt_validPO.Rows.Count  = 0]" DisplayName="If - No Valid Rows" sap:VirtualizedContainerService.HintSize="450,562" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[out_dt_validPO.Rows.Count  = 0]" DisplayName="If - No Valid Rows" sap:VirtualizedContainerService.HintSize="547,562" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>

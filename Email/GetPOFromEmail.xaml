@@ -1,0 +1,178 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetPoFromInput" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_imapServer" Type="InArgument(x:String)" />
+    <x:Property Name="in_imapPort" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_poEmailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="out_dt_emailImputs" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>GetPoFromInput_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetPoFromInput" sap:VirtualizedContainerService.HintSize="794,1344" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="imapUsername" />
+      <Variable x:TypeArguments="ss:SecureString" Name="imapPassword" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="matchingMails" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Start GetPOFromMail" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Searching inbox for Purchase Order email with subject containing: &quot; &amp; in_poEmailSubject]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SmtpCredential" CacheStrategy="None" DisplayName="Get Credential - Imap Credential" FolderPath="szilardbartha27@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="450,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[imapPassword]" Username="[imapUsername]" />
+    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - Inbox" Email="[imapUsername]" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;&quot; &amp; in_poEmailSubject &amp; &quot;&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[mailMessage]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="[in_imapPort]" SecureConnection="Auto" SecurePassword="[imapPassword]" Server="[in_imapServer]" Top="10" />
+    <Assign DisplayName="Assign - Filter Matching PO Emails" sap:VirtualizedContainerService.HintSize="450,115" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">[matchingMails]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)">[If(mailMessage Is Nothing, New List(Of System.Net.Mail.MailMessage), mailMessage.Where(Function(m) m.Subject.ToLower.Contains(in_poEmailSubject.ToLower) AndAlso Not m.Subject.ToLower.Contains("confirmation") AndAlso Not m.Subject.ToLower.StartsWith("re:") AndAlso m.Attachments.Any(Function(a) a.Name.ToLower.EndsWith(".xlsx") AndAlso (a.Name.ToLower.Contains("po") OrElse a.Name.ToLower.Contains("purchase")) AndAlso Not a.Name.ToLower.Contains("statusreport"))).ToList())]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[matchingMails.Count = 0]" DisplayName="If - Check If Any PO Emails Exist" sap:VirtualizedContainerService.HintSize="450,435" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw - No unread email found" Exception="[New BusinessRuleException(&quot;No unread email found with subject '&quot; &amp; in_poEmailSubject &amp; &quot;' and a valid PO .xlsx attachment.&quot;)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim dt As New System.Data.DataTable()&#xD;&#xA;dt.Columns.Add(&quot;PoFilePath&quot;, GetType(String))&#xD;&#xA;dt.Columns.Add(&quot;EmailBodyText&quot;, GetType(String))&#xD;&#xA;dt.Columns.Add(&quot;SenderEmail&quot;, GetType(String))&#xD;&#xA;&#xD;&#xA;Dim baseFolder As String = If(String.IsNullOrWhiteSpace(in_baseFolder), &quot;Data\InputEmail&quot;, in_baseFolder)&#xD;&#xA;&#xD;&#xA;For i As Integer = 0 To in_matchingMails.Count - 1&#xD;&#xA;    Dim mail = in_matchingMails(i)&#xD;&#xA;&#xD;&#xA;    ' 1. Creeaza un folder separat per email ca sa nu se suprascrie fisiere cu acelasi nume&#xD;&#xA;    Dim emailFolder As String = System.IO.Path.Combine(baseFolder, $&quot;Email_{i + 1}&quot;)&#xD;&#xA;    System.IO.Directory.CreateDirectory(emailFolder)&#xD;&#xA;&#xD;&#xA;    ' 2. Gaseste si salveaza atasamentul PO (.xlsx)&#xD;&#xA;    Dim poAttachment = mail.Attachments.First(Function(a) _&#xD;&#xA;        a.Name.ToLower().EndsWith(&quot;.xlsx&quot;) AndAlso _&#xD;&#xA;        (a.Name.ToLower().Contains(&quot;po&quot;) OrElse a.Name.ToLower().Contains(&quot;purchase&quot;)) AndAlso _&#xD;&#xA;        Not a.Name.ToLower().Contains(&quot;statusreport&quot;))&#xD;&#xA;&#xD;&#xA;    Dim safeFileName As String = System.IO.Path.GetFileName(poAttachment.Name)&#xD;&#xA;    Dim fullFilePath As String = System.IO.Path.Combine(emailFolder, safeFileName)&#xD;&#xA;&#xD;&#xA;    If poAttachment.ContentStream.CanSeek Then poAttachment.ContentStream.Position = 0&#xD;&#xA;    Using fs As New System.IO.FileStream(fullFilePath, System.IO.FileMode.Create, System.IO.FileAccess.Write)&#xD;&#xA;        poAttachment.ContentStream.CopyTo(fs)&#xD;&#xA;    End Using&#xD;&#xA;&#xD;&#xA;    ' 3. Extrage textul din Body (inclusiv pentru emailuri HTML / Outlook)&#xD;&#xA;    Dim rawBody As String = mail.Body&#xD;&#xA;&#xD;&#xA;    If String.IsNullOrWhiteSpace(rawBody) AndAlso mail.Headers IsNot Nothing Then&#xD;&#xA;        rawBody = If(Not String.IsNullOrWhiteSpace(mail.Headers(&quot;PlainText&quot;)),&#xD;&#xA;                     mail.Headers(&quot;PlainText&quot;),&#xD;&#xA;                     mail.Headers(&quot;HTMLBody&quot;))&#xD;&#xA;    End If&#xD;&#xA;&#xD;&#xA;    If String.IsNullOrWhiteSpace(rawBody) AndAlso mail.AlternateViews IsNot Nothing AndAlso mail.AlternateViews.Count &gt; 0 Then&#xD;&#xA;        Dim view = mail.AlternateViews(0)&#xD;&#xA;        If view.ContentStream.CanSeek Then view.ContentStream.Position = 0&#xD;&#xA;        Using sr As New System.IO.StreamReader(view.ContentStream, System.Text.Encoding.UTF8, True, 1024, True)&#xD;&#xA;            rawBody = sr.ReadToEnd()&#xD;&#xA;        End Using&#xD;&#xA;    End If&#xD;&#xA;&#xD;&#xA;    Dim decodedBody As String = System.Net.WebUtility.HtmlDecode(If(rawBody, String.Empty))&#xD;&#xA;    Dim noHtmlBody As String = System.Text.RegularExpressions.Regex.Replace(decodedBody, &quot;&lt;.*?&gt;&quot;, &quot; &quot;)&#xD;&#xA;    Dim cleanBody As String = System.Text.RegularExpressions.Regex.Replace(noHtmlBody, &quot;\s+&quot;, &quot; &quot;).Trim()&#xD;&#xA;    Dim senderEmail As String = mail.From.Address.Trim()&#xD;&#xA;&#xD;&#xA;    dt.Rows.Add(fullFilePath, cleanBody, senderEmail)&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;out_dt_emailInputs = dt" DisplayName="Invoke Code - Save Attachments and Build Email Inputs" sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_matchingMails">[matchingMails]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_baseFolder">Data\InputEmail</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_emailInputs">[out_dt_emailImputs]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message - The PO's were extracted" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Successfully extracted &quot; &amp; out_dt_emailImputs.Rows.Count.ToString &amp; &quot; PO email(s).&quot;]" />
+  </Sequence>
+</Activity>
